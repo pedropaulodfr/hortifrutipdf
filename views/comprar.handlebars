@@ -1,0 +1,22 @@
+{{>cabecalho}}
+{{>slide}}
+
+<link rel="stylesheet" href="/css/comprar.css">
+
+<h1 class="nome-secao" style="margin-left: 50px">Produto</h1>
+<div class="comprar-produto" id="comprar-produto">
+    <div class="img-produto" id="img-produto"></div>
+    <div class="info-produto" id="info-produto"></div>
+    <div class="valor-total" id="valor-total">
+        <h1 style="color: #008d60;">Valor Total</h1>
+        <h2 style="color: #000000;" id="campo-valor-total"></h2>
+        <input type="submit" class="btn-comprar" value="Comprar">
+    </div>
+</div>
+
+<script>
+    let parametros = {{{parametros}}};
+</script>
+<script src="/js/comprar.js"></script>
+
+{{>rodape}}

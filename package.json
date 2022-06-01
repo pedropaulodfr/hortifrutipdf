@@ -1,0 +1,32 @@
+{
+  "name": "hortifruti",
+  "version": "1.0.0",
+  "description": "Marketplace Hortifruti",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express-handlebars": "^5.3.3",
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedropaulodfr/hortifrutipdf.git"
+  },
+  "keywords": [
+    "hortifruti",
+    "marketplace",
+    "site",
+    "loja"
+  ],
+  "author": "Pedro Paulo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedropaulodfr/hortifrutipdf/issues"
+  },
+  "homepage": "https://github.com/pedropaulodfr/hortifrutipdf#readme"
+}

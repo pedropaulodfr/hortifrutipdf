@@ -1,0 +1,68 @@
+#form-link a{
+    text-decoration: none;
+}
+.secao-title{
+    position: relative;
+    display: inline;
+    width: 100%;
+    color: #008d60;
+    text-decoration: underline;
+    font-size: 30px;
+}
+.secao-title-divisao{
+    position: relative;
+    display: inline;
+    width: 100%;
+    color: #008d60;
+    font-size: 30px;
+    text-decoration: none;
+}
+.itens{
+    position: relative;
+    top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+.amostra-itens{
+    position: relative;
+    border-style: solid;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 250px;
+    background-color: white;
+    margin: 5px;
+    border: 1px solid lightgray;
+    text-align: center;
+}
+.amostra-itens h1{
+    font-size: 17px;
+    font-weight: bold;
+}
+.amostra-itens h2{
+    font-size: 13px;
+    margin: 15px;
+}
+.amostra-itens img{
+    max-width: 110px;
+    max-height: 110px;
+}
+.btn-comprar{
+    width: 150px;
+    height: 40px;
+    margin: 10px;
+    color: #008d60;
+    font-weight: bold;
+    background-color: #d1fded;
+    border: none;
+    border-radius: 5px;
+}
+.btn-comprar:hover{
+    background-color: #008d60;
+    color: #ffffff;
+}
