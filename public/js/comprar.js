@@ -35,8 +35,9 @@ inputQuantidade.value = 1;
 
 inputQuantidade.addEventListener("click", () =>{
     let quantidade = document.querySelector("#quantidade").value;
+    let valorTotal = parametros.valor * quantidade
 
-    campoValorTotal.innerText = "R$ " + String(parametros.valor * quantidade).replace(".", ",");
+    campoValorTotal.innerText = "R$ " + String(valorTotal.toFixed(2)).replace(".", ",");
 });
 
 divConfirmarQuantidade.appendChild(h3);
