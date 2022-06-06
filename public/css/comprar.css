@@ -1,3 +1,14 @@
+@keyframes modal {
+    from{
+        opacity: 0;
+        transform: translate3d(0, -60px, 0);
+    } 
+    to{
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
 .comprar-produto{
     position: relative;
     display: flex;
@@ -69,10 +80,12 @@
 }
 .content-modal-entrega.mostrar{
     display: flex;
+    animation: modal .5s
 }
 .modal-entrega{
     position: relative;
     width: 60%;
+    min-height: 400px;
     background: #FFFFFF;
     border-radius: 20px;
 }
@@ -98,17 +111,17 @@
     top: 15px;
     right: 20px;
 }
-
-@keyframes modal {
-    from{
-        opacity: 0;
-        transform: translate3d(0, -60px, 0);
-    } 
-    to{
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
+.compra-finalizada{
+    text-align: center;
 }
-.mostrar .modal{
-    animation: modal .3s
+.compra-finalizada h1{
+    margin-top: 100px;
+    color: #008D60;
+}
+.compra-finalizada h2{
+    margin-top: 50px;
+    color: #008D60;
+}
+.compra-finalizada input{
+    margin-top: 100px;
 }
