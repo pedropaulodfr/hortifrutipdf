@@ -22,7 +22,25 @@ const btnComprar = document.getElementById('btn-comprar');
 btnComprar.addEventListener("click", () => iniciaModal('content-modal-entrega'))
 
 const btnConfirmar = document.getElementById('btn-confirmar-dados-entrega');
-btnConfirmar.addEventListener("click", compraFinalizada);
+btnConfirmar.addEventListener("click", verificarCamposModal);
+
+function verificarCamposModal() {
+    let campoNome = document.querySelector("#input-nome").value;
+    let campoCPF = document.querySelector("#input-CPF").value;
+    let campoTelefone = document.querySelector("#input-telefone").value;
+    let campoRua = document.querySelector("#input-rua").value;
+    let campoNumero = document.querySelector("#input-numero").value;
+    let campoBairro = document.querySelector("#input-bairro").value;
+    let campoCidade = document.querySelector("#input-cidade").value;
+    let campoCEP = document.querySelector("#input-CEP").value;
+
+    if ((campoNome == '') || (campoCPF == '') || (campoTelefone == '') || (campoRua == '') || 
+    (campoNumero == '') || (campoBairro == '') || (campoCidade == '')) {
+        alert('Algum campo está vazio');
+    }else{
+        compraFinalizada();
+    }
+}
 
 function compraFinalizada(params) {
     const divInputDados = document.getElementById('input-dados');
