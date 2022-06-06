@@ -35,6 +35,9 @@
 .input-dados-group input, h3{
    margin-left: 50px;
 }
+.campo.erro{
+    border: solid 1px red;
+}
 #btn-confirmar-dados-entrega{
     margin-left: 50vh;
 }

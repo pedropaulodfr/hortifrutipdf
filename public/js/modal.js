@@ -25,34 +25,45 @@ const btnConfirmar = document.getElementById('btn-confirmar-dados-entrega');
 btnConfirmar.addEventListener("click", verificarCamposModal);
 
 function verificarCamposModal() {
-    let campoNome = document.querySelector("#input-nome").value;
-    let campoCPF = document.querySelector("#input-CPF").value;
-    let campoTelefone = document.querySelector("#input-telefone").value;
-    let campoRua = document.querySelector("#input-rua").value;
-    let campoNumero = document.querySelector("#input-numero").value;
-    let campoBairro = document.querySelector("#input-bairro").value;
-    let campoCidade = document.querySelector("#input-cidade").value;
-    let campoCEP = document.querySelector("#input-CEP").value;
+    console.log('Verificar Campos');
+    let campoNome = document.querySelector("#input-nome");
+    let campoCPF = document.querySelector("#input-CPF");
+    let campoTelefone = document.querySelector("#input-telefone");
+    let campoRua = document.querySelector("#input-rua");
+    let campoNumero = document.querySelector("#input-numero");
+    let campoBairro = document.querySelector("#input-bairro");
+    let campoCidade = document.querySelector("#input-cidade");
+    let campoCEP = document.querySelector("#input-CEP");
 
-    if ((campoNome == '') || (campoCPF == '') || (campoTelefone == '') || (campoRua == '') || 
-    (campoNumero == '') || (campoBairro == '') || (campoCidade == '')) {
-        alert('Algum campo está vazio');
+    if (campoNome.value == ''){
+        campoNome.classList.add('erro');
+    }else if (campoCPF.value == ''){
+        campoCPF.classList.add('erro');
+    }else if (campoTelefone.value == ''){
+        campoTelefone.classList.add('erro');
+    }else if (campoRua.value == ''){
+        campoRua.classList.add('erro');
+    }else if (campoNumero.value == ''){
+        campoNumero.classList.add('erro');
+    }else if (campoBairro.value == ''){
+        campoBairro.classList.add('erro');
+    }else if (campoCidade.value == ''){
+        campoCidade.classList.add('erro');
     }else{
+        salvarDados(campoNome, campoCPF, campoTelefone, campoRua, campoNumero, campoBairro, campoCidade,
+            campoCEP);
         compraFinalizada();
     }
 }
 
-function compraFinalizada(params) {
+function compraFinalizada() {
     const divInputDados = document.getElementById('input-dados');
     divInputDados.style.display = 'none';
 
     const tituloModalEntrega = document.getElementById('titulo-modal-entrega');
     tituloModalEntrega.style.display = 'none';
 
-    
-
     const divModalEntrega = document.getElementById("modal-entrega");
-    
 
     if (document.getElementById('compra-finalizada') == null) {
         const divCompraFinalizada = document.createElement('div'); 
@@ -67,12 +78,6 @@ function compraFinalizada(params) {
         h1.innerText = "Tudo OK!";
         h2.innerText = "A HORTIFRUTIPDF agradece a sua preferência ;)";
 
-        h1.className = 'compra-finalizada-text';
-        h2.className = 'compra-finalizada-text';
-        //<form action="" method="get"></form>
-        form.action = "/";
-        form.method = 'get';
-
         btnOK.type = 'submit';
         btnOK.className = "btn-comprar";
         btnOK.id = "btn-finalizar-compra";
@@ -85,6 +90,20 @@ function compraFinalizada(params) {
         divModalEntrega.appendChild(divCompraFinalizada);
     }else{
         document.getElementById('compra-finalizada').style.display = 'block';
-    }
+    }  
+}
 
+function salvarDados(nome, cpf, telefone, rua, numero, bairro, cidade, cep) {
+    let quantidade = document.querySelector('#quantidade').value;
+    let form = document.getElementById('form-confirmar-dados-entrega');
+
+    console.log(form);
+
+    h1.className = 'compra-finalizada-text';
+    h2.className = 'compra-finalizada-text';
+    form.action = "/confirmarCompra/" + parametros.nome + "/" + String(quantidade) + "/" + (parametros.valor * quantidade) + "/" + nome.value + "/" +
+        cpf.value + "/" + String(telefone.value) + "/" + rua.value + "/" + String(numero.value) + "/" + bairro.value + "/" +
+        String(cidade.value).replace("/", "-") + "/" + cep.value;
+    form.method = 'get';
+    
 }

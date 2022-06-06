@@ -62,6 +62,21 @@ app.get('/comprar/:nome/:valor/:unidade/:nomeImagem/:token/:nomeRota', (req, res
     })
 })
 
+app.get('/confirmarCompra/:produto/:quantidade/:valorTotal/:nome/:cpf/:telefone/:rua/:numero/:bairro/:cidade/:cep', (req, res) =>{
+    console.log(req.params)
+    let sql = "INSERT INTO entregas (produto, quantidade, valor_total, nome, cpf, telefone, rua, numero, bairro, cidade, cep) VALUES" +
+    "($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);";
+    let values = [String(req.params.produto), req.params.quantidade, req.params.valorTotal, String(req.params.nome),
+        String(req.params.cpf), String(req.params.telefone), String(req.params.rua), req.params.numero,String(req.params.bairro),
+        String(req.params.cidade), String(req.params.cep)]
+    try {
+        client.query(sql, values)
+    } catch (error) {
+        console.log(error);        
+    }
+    console.log('Dados inseridos com sucesso');
+})
+
 app.listen(porta, ()=>{
     console.log("Servidor rodando na porta http://localhost:" + porta);
 })
