@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const handlebars = require("express-handlebars")
 const bodyParser = require("body-parser")
+const { send } = require("express/lib/response")
 const porta = process.env.PORT || 8181
 
 // Config. handlebars
@@ -75,6 +76,16 @@ app.get('/confirmarCompra/:produto/:quantidade/:valorTotal/:nome/:cpf/:telefone/
         console.log(error);        
     }
     console.log('Dados inseridos com sucesso');
+})
+
+app.get("/admin", (req, res) =>{
+    client.query("SELECT * FROM entregas").then(results =>{
+        const resultado = results.rows
+        console.log(resultado);
+        res.render("admin", {
+            dadosEntregas: JSON.stringify(resultado)
+        })
+    })
 })
 
 app.listen(porta, ()=>{
