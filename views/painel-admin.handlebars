@@ -12,12 +12,32 @@
     </tr>
 </table>
 
+<style>
+    .dados-entrega{
+        margin: 20px;
+        display: none;
+    }
+    .dados-entrega.mostrar{
+        display: block;
+    }
+    .dados-entrega td{
+        padding: 8px;
+        border: solid 1px #000000;
+    }
+    #cabecalho{
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+
 <script>
+    function iniciaEntregas(){
     let dadosEntregas = {{{dadosEntregas}}};
     console.log(dadosEntregas)
 
     for(let i = 0; i < dadosEntregas.length; i++){
         let tabela = document.getElementById('dados-entrega');
+        tabela.classList.add('mostrar');
     
         let linha = document.createElement('tr');
         let dadoNome = document.createElement('td');
@@ -46,20 +66,9 @@
         linha.appendChild(dadoValorTotal);
         tabela.appendChild(linha);
     }
-</script>
+}
 
-<style>
-    .dados-entrega{
-        margin: 20px;
-    }
-    .dados-entrega td{
-        padding: 8px;
-        border: solid 1px #000000;
-    }
-    #cabecalho{
-        text-align: center;
-        font-weight: bold;
-    }
-</style>
+iniciaEntregas()
+</script>
 
 {{>rodape}}

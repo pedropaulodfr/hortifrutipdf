@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const handlebars = require("express-handlebars")
 const bodyParser = require("body-parser")
-const { send } = require("express/lib/response")
+const { send, get } = require("express/lib/response")
 const porta = process.env.PORT || 8181
 
 // Config. handlebars
@@ -78,13 +78,43 @@ app.get('/confirmarCompra/:produto/:quantidade/:valorTotal/:nome/:cpf/:telefone/
     console.log('Dados inseridos com sucesso');
 })
 
-app.get("/admin", (req, res) =>{
+app.get('/admin', (req, res) =>{
+    res.render("autenticacao")
+})
+
+app.post('/autenticacao/:usuario/:senha', (req, res) =>{
+    console.log(req.params);
+    let usuario = req.params.usuario
+    let senha = req.params.senha
+    
+    client.query("SELECT * FROM usuarios").then(results =>{
+        const resultado = results.rows
+        let indexUsuario = resultado.findIndex(element => element.nome_usuario == usuario)
+        let indexSenha = resultado.findIndex(element => element.senha == senha)
+        
+        let usuarioBD = resultado[indexUsuario].nome_usuario
+        let senhaBD = resultado[indexUsuario].senha
+
+
+        console.log(usuarioBD, senhaBD);
+
+        if (usuario == usuarioBD && senha == senhaBD) {
+            console.log('Usuário Autenticado');
+            res.redirect(307, '/painel-admin')
+        } else {
+            console.log('Falha de Autenticação');
+        }
+
+    })
+})
+
+app.post('/painel-admin', (req, res) => {
     client.query("SELECT * FROM entregas").then(results =>{
         const resultado = results.rows
         console.log(resultado);
-        res.render("admin", {
+        res.render('painel-admin', {
             dadosEntregas: JSON.stringify(resultado)
-        })
+        } )
     })
 })
 
