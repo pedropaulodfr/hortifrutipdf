@@ -86,6 +86,12 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
     console.log(req.params);
     let usuario = req.params.usuario
     let senha = req.params.senha
+
+    const data = new Date()
+    const dia = data.getDate()
+    const mes = data.getMonth() + 1
+    const ano = data.getFullYear()
+    const diaAtual = ano + '-' + mes + '-' + dia
     
     client.query("SELECT * FROM usuarios").then(results =>{
         const resultado = results.rows
@@ -100,12 +106,11 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
             res.redirect('/admin')
         }
         
-        
         console.log(usuarioBD, senhaBD);
         
         if (usuario == usuarioBD && senha == senhaBD) {
             console.log('Usuário Autenticado')
-            res.redirect(307, '/painel-admin')
+            res.redirect(307, '/painel-admin/' + diaAtual)
         } else {
             console.log('Falha de Autenticação')
             res.redirect('/admin')
@@ -114,10 +119,10 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
     })
 })
 
-app.post('/painel-admin', (req, res) => {
-    client.query("SELECT *, to_char(data_pedido, 'DD/MM/YYYY') AS data_pedido FROM entregas").then(results =>{
+app.post('/painel-admin/:diaAtual', (req, res) => {
+    console.log(req.params.diaAtual);
+    client.query("SELECT *, to_char(data_pedido, 'DD/MM/YYYY') AS data_pedido FROM entregas WHERE data_pedido = '" + req.params.diaAtual + "'").then(results =>{
         const resultado = results.rows
-        console.log(resultado);
         res.render('painel-admin', {
             dadosEntregas: JSON.stringify(resultado)
         } )
