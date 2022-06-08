@@ -1,5 +1,7 @@
 {{>cabecalho}}
 
+<link rel="stylesheet" href="/css/autenticacao.css">
+
 <div id="autenticacao-container" class="autenticacao-container">
     <div class="autenticacao">
         <div class="autenticacao-cabecalho">
@@ -13,122 +15,13 @@
             </div>
             <div class="campo-senha">
                 <h3>Senha</h3>
-                <input type="text" id="senha" class="campo">
+                <input type="password" id="senha" class="campo">
             </div>
             <button id="btn-confirmar-autenticacao">Confirmar</button>
         </div>
     </div>
 </div>
 
-<style>
-    .autenticacao-container{
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 500px;
-    }
-    .autenticacao{
-        position: absolute;
-        display: inline;
-        background-color: white;
-        width: 35vw;
-        height: 400px;
-        border: solid 1px #000000;
-        border-radius: 20px;
-    }
-    .autenticacao-cabecalho{
-        position: absolute;
-        display: flex;
-        top: 20px;
-        left: 20px;
-    }
-    .autenticacao-cabecalho img{
-        max-width:75px;
-        max-height:75px;
-        width: auto;
-        height: auto;
-    }
-    .autenticacao-cabecalho h1{
-        font-size: 28px;
-        margin-left: 20px;
-        margin-top: 18px;
-        color: #008d60;
-    }
-    .autenticacao-campos{
-        position: absolute;
-        top: 160px;
-        left: 20px;
-        width: 100%;
-    }
-    .autenticacao-campos h3{
-        font-size: 12px;
-        font-weight: bold;
-        margin-bottom: 2px;
-    }
-    .autenticacao-campos input{
-       width: 90%;
-       height: 35px; 
-       border: solid 1px #000000;
-       border-radius: 3px;
-    }
-    .campo-senha{
-        margin-top: 25px;
-    }
-    .campo.erro{
-        border: solid 1px red;
-    }
-    #btn-confirmar-autenticacao{
-        width: 90%;
-        height: 40px;
-        margin-top: 25px;
-        font-size: 18px;
-        font-weight: bold;
-        background-color: #008d60;
-        color: #ffffff;
-        border: none;
-        border-radius: 5px;
-        letter-spacing: 1.2px;
-    }
-    #btn-confirmar-autenticacao:hover{
-        background-color: #18a578;
-    }
+<script src="/js/autenticacao.js"></script>
 
-
-</style>
-
-
-
-<script>
-    let btnConfirmarAutenticacao = document.getElementById('btn-confirmar-autenticacao');
-    btnConfirmarAutenticacao.addEventListener("click", ()=>{
-        verificarCamposAutenticacao();
-    })
-
-    function verificarCamposAutenticacao(){
-        let usuario = document.getElementById('usuario');
-        let senha = document.getElementById('senha');
-
-        if(usuario.value == ''){
-            usuario.classList.add('erro')
-        }else if (senha.value == ''){
-            senha.classList.add('erro')
-        }else{
-            autenticacao(usuario.value, senha.value)
-        }
-    }
-
-    function autenticacao(usuario, senha){
-        console.log(usuario, senha);
-        let form = document.createElement('form');
-        form.action = '/autenticacao/' + usuario + '/' + senha;
-        form.method = 'post';
-        
-        document.getElementById('autenticacao-container').appendChild(form);
-
-        form.submit();
-        //window.location.href = '/autenticacao/' + usuario + '/' + senha
-    }
-</script>
 {{>rodape}}

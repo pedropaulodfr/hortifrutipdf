@@ -1,7 +1,10 @@
 {{>cabecalho}}
 
+<link rel="stylesheet" href="/css/painel-admin.css">
+
 <table border="1" id="dados-entrega" class="dados-entrega">
     <tr id="cabecalho">
+        <td>Data</td>
         <td>Nome</td>
         <td>CPF</td>
         <td>Endereço</td>
@@ -12,63 +15,10 @@
     </tr>
 </table>
 
-<style>
-    .dados-entrega{
-        margin: 20px;
-        display: none;
-    }
-    .dados-entrega.mostrar{
-        display: block;
-    }
-    .dados-entrega td{
-        padding: 8px;
-        border: solid 1px #000000;
-    }
-    #cabecalho{
-        text-align: center;
-        font-weight: bold;
-    }
-</style>
-
 <script>
-    function iniciaEntregas(){
     let dadosEntregas = {{{dadosEntregas}}};
-    console.log(dadosEntregas)
-
-    for(let i = 0; i < dadosEntregas.length; i++){
-        let tabela = document.getElementById('dados-entrega');
-        tabela.classList.add('mostrar');
-    
-        let linha = document.createElement('tr');
-        let dadoNome = document.createElement('td');
-        let dadoCPF = document.createElement('td');
-        let dadoEndereco = document.createElement('td');
-        let dadoTelefone = document.createElement('td');
-        let dadoProduto = document.createElement('td');
-        let dadoQuantidade = document.createElement('td');
-        let dadoValorTotal = document.createElement('td');
-
-        dadoNome.innerText = dadosEntregas[i].nome;
-        dadoCPF.innerText = dadosEntregas[i].cpf;
-        dadoEndereco.innerText = dadosEntregas[i].rua + ', ' + dadosEntregas[i].numero + ', ' + dadosEntregas[i].bairro +
-            ', ' + dadosEntregas[i].cidade + ', ' + dadosEntregas[i].cep;
-        dadoTelefone.innerText = dadosEntregas[i].telefone;
-        dadoProduto.innerText = dadosEntregas[i].produto;
-        dadoQuantidade.innerText = dadosEntregas[i].quantidade;
-        dadoValorTotal.innerText = dadosEntregas[i].valor_total;
-
-        linha.appendChild(dadoNome);
-        linha.appendChild(dadoCPF);
-        linha.appendChild(dadoEndereco);
-        linha.appendChild(dadoTelefone);
-        linha.appendChild(dadoProduto);
-        linha.appendChild(dadoQuantidade);
-        linha.appendChild(dadoValorTotal);
-        tabela.appendChild(linha);
-    }
-}
-
-iniciaEntregas()
 </script>
+
+<script src="/js/painel-admin.js"></script>
 
 {{>rodape}}

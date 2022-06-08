@@ -92,24 +92,30 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
         let indexUsuario = resultado.findIndex(element => element.nome_usuario == usuario)
         let indexSenha = resultado.findIndex(element => element.senha == senha)
         
-        let usuarioBD = resultado[indexUsuario].nome_usuario
-        let senhaBD = resultado[indexUsuario].senha
-
-
+        try {
+            var usuarioBD = resultado[indexUsuario].nome_usuario
+            var senhaBD = resultado[indexUsuario].senha
+        } catch (error) {
+            console.log(error);
+            res.redirect('/admin')
+        }
+        
+        
         console.log(usuarioBD, senhaBD);
-
+        
         if (usuario == usuarioBD && senha == senhaBD) {
-            console.log('Usuário Autenticado');
+            console.log('Usuário Autenticado')
             res.redirect(307, '/painel-admin')
         } else {
-            console.log('Falha de Autenticação');
+            console.log('Falha de Autenticação')
+            res.redirect('/admin')
         }
 
     })
 })
 
 app.post('/painel-admin', (req, res) => {
-    client.query("SELECT * FROM entregas").then(results =>{
+    client.query("SELECT *, to_char(data_pedido, 'DD/MM/YYYY') AS data_pedido FROM entregas").then(results =>{
         const resultado = results.rows
         console.log(resultado);
         res.render('painel-admin', {

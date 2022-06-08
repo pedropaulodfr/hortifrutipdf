@@ -1,0 +1,73 @@
+.autenticacao-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+}
+.autenticacao{
+    position: absolute;
+    display: inline;
+    background-color: white;
+    width: 35vw;
+    height: 400px;
+    border: solid 1px #000000;
+    border-radius: 20px;
+}
+.autenticacao-cabecalho{
+    position: absolute;
+    display: flex;
+    top: 20px;
+    left: 20px;
+}
+.autenticacao-cabecalho img{
+    max-width:75px;
+    max-height:75px;
+    width: auto;
+    height: auto;
+}
+.autenticacao-cabecalho h1{
+    font-size: 28px;
+    margin-left: 20px;
+    margin-top: 18px;
+    color: #008d60;
+}
+.autenticacao-campos{
+    position: absolute;
+    top: 160px;
+    left: 20px;
+    width: 100%;
+}
+.autenticacao-campos h3{
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+.autenticacao-campos input{
+    width: 90%;
+    height: 35px; 
+    border: solid 1px #000000;
+    border-radius: 3px;
+}
+.campo-senha{
+    margin-top: 25px;
+}
+.campo.erro{
+    border: solid 1px red;
+}
+#btn-confirmar-autenticacao{
+    width: 90%;
+    height: 40px;
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #008d60;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: .5px;
+}
+#btn-confirmar-autenticacao:hover{
+    background-color: #18a578;
+}
