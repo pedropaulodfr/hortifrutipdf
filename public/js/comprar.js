@@ -40,8 +40,8 @@ inputQuantidade.addEventListener("click", () =>{
     let quantidade = document.querySelector("#quantidade").value;
     let valorTotal = parametros.valor * quantidade
 
-    if (quantidade > parametros.quantidadeDisponivel) {
-        //inputQuantidade.value = parametros.quantidadeDisponivel;
+    if (parseInt(quantidade) > parametros.quantidadeDisponivel) {
+        inputQuantidade.value = parametros.quantidadeDisponivel;
     }else{
         campoValorTotal.innerText = "R$ " + String(valorTotal.toFixed(2)).replace(".", ",");
     }
