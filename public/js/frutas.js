@@ -1,7 +1,9 @@
 for (let i = 0; i < dadosFrutas.length; i++){
+    let id = dadosFrutas[i].id;
     let nome = dadosFrutas[i].nome;
     let nomeImagem = dadosFrutas[i].nome_imagem;
     let valor = dadosFrutas[i].valor;
+    let quantidadeDisponivel = dadosFrutas[i].quantidade_disponivel;
     let token = dadosFrutas[i].token;
     let unidade = dadosFrutas[i].unidade;
 
@@ -19,7 +21,7 @@ for (let i = 0; i < dadosFrutas.length; i++){
     img.src = URL_BASE;
     h2.innerHTML = nome;
     h1.innerHTML = "R$ " + String(valor).replace('.', ',') + " / " + unidade;
-    form.action = "/comprar/" + nome + "/" + valor + "/" + unidade + "/" + nomeImagem + "/" + token + "/" + nomeRota;
+    form.action = "/comprar/" + id + "/" + nome + "/" + valor + "/" + unidade + "/" + quantidadeDisponivel + "/" + nomeImagem + "/" + token + "/" + nomeRota;
     form.method = "get";
     form.id = "form-comprar";
     input.className = "btn-comprar";

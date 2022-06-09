@@ -101,9 +101,11 @@ function salvarDados(nome, cpf, telefone, rua, numero, bairro, cidade, cep) {
 
     h1.className = 'compra-finalizada-text';
     h2.className = 'compra-finalizada-text';
-    form.action = "/confirmarCompra/" + parametros.nome + "/" + String(quantidade) + "/" + (parametros.valor * quantidade) + "/" + nome.value + "/" +
-        cpf.value + "/" + String(telefone.value) + "/" + rua.value + "/" + String(numero.value) + "/" + bairro.value + "/" +
-        String(cidade.value).replace("/", "-") + "/" + cep.value;
-    form.method = 'get';
+    form.action = "/confirmarCompra/"+ parametros.nomeRota + "/" + String(parametros.id) + "/" + 
+        parametros.nome + "/" + String(quantidade) + "/" + (parametros.valor * quantidade) + "/" + 
+        nome.value + "/" + cpf.value + "/" + String(telefone.value) + "/" + rua.value + "/" + 
+        String(numero.value) + "/" + bairro.value + "/" + String(cidade.value).replace("/", "-") + "/" + 
+        cep.value;
+    form.method = 'post';
     
 }

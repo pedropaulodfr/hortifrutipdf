@@ -57,25 +57,41 @@ app.post('/legumes', (req, res) =>{
     })
 })
 
-app.get('/comprar/:nome/:valor/:unidade/:nomeImagem/:token/:nomeRota', (req, res) =>{
+app.get('/comprar/:id/:nome/:valor/:unidade/:quantidadeDisponivel/:nomeImagem/:token/:nomeRota', (req, res) =>{
     res.render('comprar', {
         parametros: JSON.stringify(req.params)
     })
 })
 
-app.get('/confirmarCompra/:produto/:quantidade/:valorTotal/:nome/:cpf/:telefone/:rua/:numero/:bairro/:cidade/:cep', (req, res) =>{
+app.post('/confirmarCompra/:nomeRota/:id/:produto/:quantidade/:valorTotal/:nome/:cpf/:telefone/:rua/:numero/:bairro/:cidade/:cep', (req, res) =>{
     console.log(req.params)
-    let sql = "INSERT INTO entregas (produto, quantidade, valor_total, nome, cpf, telefone, rua, numero, bairro, cidade, cep) VALUES" +
-    "($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);";
-    let values = [String(req.params.produto), req.params.quantidade, req.params.valorTotal, String(req.params.nome),
-        String(req.params.cpf), String(req.params.telefone), String(req.params.rua), req.params.numero,String(req.params.bairro),
-        String(req.params.cidade), String(req.params.cep)]
-    try {
-        client.query(sql, values)
-    } catch (error) {
-        console.log(error);        
+    client.query("SELECT quantidade_disponivel FROM " + req.params.nomeRota + " WHERE id =" + req.params.id).then(results =>{
+        const resultado = results.rows
+        quantidadeDisponivel = resultado[0].quantidade_disponivel
+        inserirEntregasBD()
+        atualizarQuantidadeDisponivel(quantidadeDisponivel)
+    })
+
+    function inserirEntregasBD() {
+        let sql = "INSERT INTO entregas (produto, quantidade, valor_total, nome, cpf, telefone, rua, numero, bairro, cidade, cep) VALUES" +
+        "($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);";
+        let values = [String(req.params.produto), req.params.quantidade, req.params.valorTotal, String(req.params.nome),
+            String(req.params.cpf), String(req.params.telefone), String(req.params.rua), req.params.numero,String(req.params.bairro),
+            String(req.params.cidade), String(req.params.cep)]
+        try {
+            client.query(sql, values)
+        } catch (error) {
+            console.log(error);        
+        }
+        console.log('Dados inseridos com sucesso');
     }
-    console.log('Dados inseridos com sucesso');
+
+    function atualizarQuantidadeDisponivel(quantidadeDisponivel) {
+        console.log(quantidadeDisponivel);
+        client.query("UPDATE " + req.params.nomeRota + " SET quantidade_disponivel =" + (quantidadeDisponivel - parseInt(req.params.quantidade)) + "WHERE id =" + req.params.id)
+        console.log('Quantidade atualizada');
+    }
+
 })
 
 app.get('/admin', (req, res) =>{

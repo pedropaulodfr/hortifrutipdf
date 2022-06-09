@@ -2,6 +2,8 @@ let URL_BASE = "https://firebasestorage.googleapis.com/v0/b/hortifruti-75cfd.app
 String(parametros.nomeRota) + "%2F" + String(parametros.nomeImagem) + ".png?alt=media&token=" + 
 String(parametros.token);
 
+console.log(parametros.id);
+
 let divInfoProduto = document.getElementById("info-produto");
 let divImg = document.getElementById("img-produto");
 let campoValorTotal = document.getElementById("campo-valor-total");
@@ -31,13 +33,19 @@ h3.innerText = "Quantidade";
 inputQuantidade.type = "number";
 inputQuantidade.id = "quantidade";
 inputQuantidade.className = "quantidade";
+inputQuantidade.max = parametros.quantidadeDisponivel;
 inputQuantidade.value = 1;
 
 inputQuantidade.addEventListener("click", () =>{
     let quantidade = document.querySelector("#quantidade").value;
     let valorTotal = parametros.valor * quantidade
 
-    campoValorTotal.innerText = "R$ " + String(valorTotal.toFixed(2)).replace(".", ",");
+    if (quantidade > parametros.quantidadeDisponivel) {
+        //inputQuantidade.value = parametros.quantidadeDisponivel;
+    }else{
+        campoValorTotal.innerText = "R$ " + String(valorTotal.toFixed(2)).replace(".", ",");
+    }
+
 });
 
 divConfirmarQuantidade.appendChild(h3);
