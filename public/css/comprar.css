@@ -20,7 +20,6 @@
 }
 .comprar-produto h2{
     font-size: 35px;
-    color: #008D60;
 }
 .comprar-produto h3{
     font-size: 18px;
@@ -65,4 +64,11 @@
     border: solid 1px #008d60;
     border-radius: 10px;
     text-align: center;
+}
+.campo-valor-total{
+    text-decoration: none;
+    color: #000000;
+}
+.riscado{
+    text-decoration: line-through 3px rgba(255, 0, 0, .8);
 }

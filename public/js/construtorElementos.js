@@ -1,14 +1,22 @@
-for (let i = 0; i < dadosVerduras.length; i++){
-    let id = dadosVerduras[i].id;
-    let nome = dadosVerduras[i].nome;
-    let nomeImagem = dadosVerduras[i].nome_imagem;
-    let valor = dadosVerduras[i].valor;
-    let quantidadeDisponivel = dadosVerduras[i].quantidade_disponivel;
-    let token = dadosVerduras[i].token;
-    let unidade = dadosVerduras[i].unidade;
+for (let i = 0; i < dados.length; i++){
+    let id = dados[i].id;
+    let nome = dados[i].nome;
+    let nomeImagem = dados[i].nome_imagem;
+    let valor = dados[i].valor;
+    let quantidadeDisponivel = dados[i].quantidade_disponivel;
+    let token = dados[i].token;
+    let unidade = dados[i].unidade;
 
-    let URL_BASE = "https://firebasestorage.googleapis.com/v0/b/hortifruti-75cfd.appspot.com/o/verduras%2F" + 
-    String(nomeImagem) + ".png?alt=media&token=" + String(token);
+    if(quantidadeDisponivel > 0){
+        criarElementos(id, nome, nomeImagem, valor, quantidadeDisponivel, token, unidade)
+    }
+}
+
+function criarElementos(id, nome, nomeImagem, valor, quantidadeDisponivel, token, unidade) {
+    let URL_BASE = "https://firebasestorage.googleapis.com/v0/b/hortifruti-75cfd.appspot.com/o/" + 
+    String(nomeRota) + "%2F" + String(nomeImagem) + ".png?alt=media&token=" + 
+    String(token);
+
 
     let div = document.createElement("div");
     let img = document.createElement("img");
@@ -32,7 +40,6 @@ for (let i = 0; i < dadosVerduras.length; i++){
     div.appendChild(img);
     div.appendChild(h2);
     div.appendChild(h1);
-    div.appendChild(form);
     div.appendChild(form);
     form.appendChild(input);
 
