@@ -14,6 +14,8 @@ function iniciarEntregas(){
             let dadoProduto = document.createElement('td');
             let dadoQuantidade = document.createElement('td');
             let dadoValorTotal = document.createElement('td');
+            let excluirEntrega = document.createElement('td');
+            let botaoExcluir = document.createElement('i');
     
             dadoData.innerText = dadosEntregas[i].data_pedido;
             dadoNome.innerText = dadosEntregas[i].nome;
@@ -24,6 +26,16 @@ function iniciarEntregas(){
             dadoProduto.innerText = dadosEntregas[i].produto;
             dadoQuantidade.innerText = dadosEntregas[i].quantidade;
             dadoValorTotal.innerText = dadosEntregas[i].valor_total;
+
+            excluirEntrega.id = 'coluna-excluir-entrega';
+
+            botaoExcluir.className = 'bx bx-x btn-excluir';
+            botaoExcluir.title = 'Excluir entrega';
+            excluirEntrega.appendChild(botaoExcluir);
+
+            botaoExcluir.addEventListener("click", () => {
+                criarBotaoExcluir(i, excluirEntrega, dadosEntregas);
+            })
     
             linha.appendChild(dadoData);
             linha.appendChild(dadoNome);
@@ -33,6 +45,7 @@ function iniciarEntregas(){
             linha.appendChild(dadoProduto);
             linha.appendChild(dadoQuantidade);
             linha.appendChild(dadoValorTotal);
+            linha.appendChild(excluirEntrega)
             tabela.appendChild(linha);
         }
     } else {
@@ -41,9 +54,49 @@ function iniciarEntregas(){
         let h1 = document.createElement('h1');
         h1.innerText = 'Não há entregas para as data selecionada';
 
-
         tabela.appendChild(h1);
     }
+}
+
+function criarBotaoExcluir(i, coluna, dadosEntregas) {
+    let tabela = document.getElementById('dados-entrega');
+    
+    let formExcluir = document.createElement('form');
+    let divConfirm = document.createElement('div');
+    let divText = document.createElement('div');
+    let divBotoes = document.createElement('div');
+    let h1 = document.createElement('h5');
+    let sim = document.createElement('i');
+    let nao = document.createElement('i');
+
+    divConfirm.className = 'confirmar-exclusao-container';
+    divConfirm.id = 'confirmar-exclusao-container';
+    divText.className = 'confirmar-exclusao-titulo';
+    divBotoes.className = 'confirmar-exclusao-botoes';
+
+    h1.innerText = 'Confirmar exclusão';
+
+    divText.appendChild(h1);
+
+    sim.className = 'bx bx-check btn-sim';
+    nao.className = 'bx bx-x btn-nao';
+
+    divBotoes.appendChild(sim);
+    divBotoes.appendChild(nao);
+
+    divConfirm.appendChild(divText);
+    divConfirm.appendChild(divBotoes);
+
+    formExcluir.action = "/delete-entrega/" + dadosEntregas[i].id + "/" + dadosEntregas[i].produto_id + "/" +
+        dadosEntregas[i].categoria + "/" + dadosEntregas[i].quantidade;
+    formExcluir.method = 'post';
+    
+    coluna.appendChild(divConfirm);
+    tabela.appendChild(formExcluir);
+
+    sim.addEventListener("click", () => {formExcluir.submit()})
+    nao.addEventListener("click", () => {divConfirm.classList.add('ocultar')})
+
 }
 
 function alterarData(){

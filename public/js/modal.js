@@ -78,6 +78,9 @@ function compraFinalizada() {
         h1.innerText = "Tudo OK!";
         h2.innerText = "A HORTIFRUTIPDF agradece a sua preferência ;)";
 
+        form.action = '/' + parametros.nomeRota;
+        form.method = 'post';
+
         btnOK.type = 'submit';
         btnOK.className = "btn-comprar";
         btnOK.id = "btn-finalizar-compra";

@@ -43,6 +43,9 @@
     border-radius: 5px;
 }
 .tabela{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 5px;
     margin-left: 20px;
     margin-bottom: 30px;
@@ -50,8 +53,40 @@
 .dados-entrega td{
     padding: 8px;
     border: solid 1px #000000;
+    text-align: center;
 }
 #cabecalho{
     text-align: center;
     font-weight: bold;
+}
+.btn-excluir{
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.confirmar-exclusao-container{
+    background-color: #008D60;
+    border-radius: 10px;
+}
+.confirmar-exclusao-titulo h5{
+    color: #ffffff;
+    font-size: 12px;
+}
+.confirmar-exclusao-botoes i{
+    font-size: 20px;
+    background-color: #ffffff;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-sim{
+    color: #008D60;
+}
+.btn-nao{
+    color: red;
+}
+.ocultar {
+    opacity: 0;
+    display: none;
 }

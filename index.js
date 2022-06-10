@@ -23,6 +23,12 @@ const client = new Client({
 })
 client.connect()
 
+const data = new Date()
+const dia = data.getDate()
+const mes = data.getMonth() + 1
+const ano = data.getFullYear()
+const diaAtual = ano + '-' + mes + '-' + dia
+
 app.get('/', (req, res)=>{
     res.render('index')
 })
@@ -57,14 +63,13 @@ app.post('/legumes', (req, res) =>{
     })
 })
 
-app.get('/comprar/:id/:nome/:valor/:unidade/:quantidadeDisponivel/:nomeImagem/:token/:nomeRota', (req, res) =>{
+app.post('/comprar/:id/:nome/:valor/:unidade/:quantidadeDisponivel/:nomeImagem/:token/:nomeRota', (req, res) =>{
     res.render('comprar', {
         parametros: JSON.stringify(req.params)
     })
 })
 
 app.post('/confirmarCompra/:nomeRota/:id/:produto/:quantidade/:valorTotal/:nome/:cpf/:telefone/:rua/:numero/:bairro/:cidade/:cep', (req, res) =>{
-    console.log(req.params)
     client.query("SELECT quantidade_disponivel FROM " + req.params.nomeRota + " WHERE id =" + req.params.id).then(results =>{
         const resultado = results.rows
         quantidadeDisponivel = resultado[0].quantidade_disponivel
@@ -73,25 +78,40 @@ app.post('/confirmarCompra/:nomeRota/:id/:produto/:quantidade/:valorTotal/:nome/
     })
 
     function inserirEntregasBD() {
-        let sql = "INSERT INTO entregas (produto, quantidade, valor_total, nome, cpf, telefone, rua, numero, bairro, cidade, cep) VALUES" +
-        "($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);";
+        let sql = "INSERT INTO entregas" + 
+                    "(produto, quantidade, valor_total, nome, cpf, telefone, rua, numero, " +
+                    "bairro, cidade, cep, produto_id, categoria)" +
+                "VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13);"
         let values = [String(req.params.produto), req.params.quantidade, req.params.valorTotal, String(req.params.nome),
-            String(req.params.cpf), String(req.params.telefone), String(req.params.rua), req.params.numero,String(req.params.bairro),
-            String(req.params.cidade), String(req.params.cep)]
+            String(req.params.cpf), String(req.params.telefone), String(req.params.rua), req.params.numero, String(req.params.bairro),
+            String(req.params.cidade), String(req.params.cep), req.params.id, req.params.nomeRota]
         try {
             client.query(sql, values)
         } catch (error) {
             console.log(error);        
         }
-        console.log('Dados inseridos com sucesso');
+        console.log('Entrega gravada do Banco de Dados');
     }
 
     function atualizarQuantidadeDisponivel(quantidadeDisponivel) {
-        console.log(quantidadeDisponivel);
         client.query("UPDATE " + req.params.nomeRota + " SET quantidade_disponivel =" + (quantidadeDisponivel - parseInt(req.params.quantidade)) + "WHERE id =" + req.params.id)
-        console.log('Quantidade atualizada');
+        console.log('Nova quantidade ' + quantidadeDisponivel + ' atualizada em ' + req.params.nomeRota);
     }
 
+})
+
+app.post('/delete-entrega/:idEntrega/:idProduto/:categoria/:quantidade', (req, res) =>{
+    console.log("Entrega id = " + req.params.idEntrega + " deletada com sucesso!")
+    console.log("Quantidade reposta no estoque = ", req.params.quantidade)
+    
+    client.query("DELETE FROM entregas WHERE id = " + req.params.idEntrega)
+    client.query("SELECT quantidade_disponivel FROM " + req.params.categoria + " WHERE id = " + req.params.idProduto).then(results =>{
+        const resultado = results.rows;
+        client.query("UPDATE " + req.params.categoria + " SET quantidade_disponivel = " + 
+                        (parseInt(resultado[0].quantidade_disponivel) + parseInt(req.params.quantidade)) + 
+                    " WHERE id = " + req.params.idProduto)
+    })
+    res.redirect(307, '/painel-admin/' + diaAtual)
 })
 
 app.get('/admin', (req, res) =>{
@@ -99,15 +119,8 @@ app.get('/admin', (req, res) =>{
 })
 
 app.post('/autenticacao/:usuario/:senha', (req, res) =>{
-    console.log(req.params);
     let usuario = req.params.usuario
     let senha = req.params.senha
-
-    const data = new Date()
-    const dia = data.getDate()
-    const mes = data.getMonth() + 1
-    const ano = data.getFullYear()
-    const diaAtual = ano + '-' + mes + '-' + dia
     
     client.query("SELECT * FROM usuarios").then(results =>{
         const resultado = results.rows
@@ -122,13 +135,11 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
             res.redirect('/admin')
         }
         
-        console.log(usuarioBD, senhaBD);
-        
         if (usuario == usuarioBD && senha == senhaBD) {
-            console.log('Usuário Autenticado')
+            console.log('Usuário ' + usuarioBD + ' autenticado')
             res.redirect(307, '/painel-admin/' + diaAtual)
         } else {
-            console.log('Falha de Autenticação')
+            console.log('Falha de autenticação')
             res.redirect('/admin')
         }
 
@@ -136,7 +147,7 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
 })
 
 app.post('/painel-admin/:diaAtual', (req, res) => {
-    console.log(req.params.diaAtual);
+    console.log('Mostrando tabela do dia ' + req.params.diaAtual);
     client.query("SELECT *, to_char(data_pedido, 'DD/MM/YYYY') AS data_pedido FROM entregas WHERE data_pedido = '" + req.params.diaAtual + "'").then(results =>{
         const resultado = results.rows
         res.render('painel-admin', {
