@@ -1,40 +1,92 @@
 {{>cabecalho}}
 
-<link rel="stylesheet" href="/css/painel-admin.css">
+<style>
+    .categorias-container{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 500px;
+        background: linear-gradient(180deg, #008D60 0%, #569E75 100%);
+    }
+    .categorias{
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 60vw;
+        height: 400px;
+        background-color: #ffffff;
+        border-radius: 15px;
+    }
+    .categorias a{
+        text-decoration: none;
+    }
+    .box-categorias{
+        background-color: #224B3E;
+        border-radius: 10px;
+        width: 170px;
+        height:150px;
+        margin-left: 60px;
+        cursor: pointer;
+        transition: all .3s;
+    }
+    .box-categorias:hover{
+        transform: scale(1.05);
+    }
+    .box-categorias img{
+        margin-top: 20px;
+        margin-left: 42px;
+        max-width: 80px;
+        max-height: 80px;
+        width: auto;
+        height: auto;
+    }
+    .box-categorias h5{
+        margin-top: 9px;
+        font-size: 20px;
+        color: #ffffff;
+        text-align: center;
+    }
+</style>
 
-<div class="entregas-content">
-    <h1 class="title-entregas">ENTREGAS</h1>
-    <div class="seletores">
-        <div class="data" id="data">
-            <h3>Data</h3>
-            <input type="date" name="" id="seletor-data">
-            <button id="btn-data">
-                <i class='bx bxs-chevron-right'></i>
-            </button>
-        </div>
-    </div>
-    <div class="tabela">
-        <table border="1" id="dados-entrega" class="dados-entrega">
-            <tr id="cabecalho">
-                <td>Data</td>
-                <td>Nome</td>
-                <td>CPF</td>
-                <td>Endereço</td>
-                <td>Telefone</td>
-                <td>Produto</td>
-                <td>Quantidade</td>
-                <td>Valor Total</td>
-                <td>Excluir Entrega</td>
-            </tr>
-        </table>
+<div class="categorias-container">
+    <div class="categorias">
+            <form action="consultar/entregas" method="post" id="form-entregas">
+                <a href="javascript:document.getElementById('form-entregas').submit();">
+                    <div class="box-categorias">
+                        <img src="/images/icons/entregas.png" alt="" srcset="">
+                        <h5>Entregas</h5>
+                    </div>
+                </a>
+            </form>
+            <form action="consultar/produtos" method="post" id="form-produtos">
+                <a href="javascript:document.getElementById('form-produtos').submit();">
+                    <div class="box-categorias">
+                        <img src="/images/icons/produtos.png" alt="" srcset="">
+                        <h5>Produtos</h5>
+                    </div>
+                </a>
+            </form>
+            <form action="consultar/add-produtos" method="post" id="form-add-produtos">
+                <a href="javascript:document.getElementById('form-add-produtos').submit();">
+                    <div class="box-categorias">
+                        <img src="/images/icons/add-produtos.png" alt="" srcset="">
+                        <h5>Add Produtos</h5>
+                    </div>
+                </a>
+            </form>
+            <form action="consultar/add-funcionarios" method="post" id="form-add-funcionarios">
+                <a href="javascript:document.getElementById('form-add-funcionarios').submit();">
+                    <div class="box-categorias">
+                        <img src="/images/icons/add-funcionarios.png" alt="" srcset="">
+                        <h5>Add Funcionários</h5>
+                    </div>
+                </a>
+            </form>
     </div>
 </div>
-
-
-<script>
-    let dadosEntregas = {{{dadosEntregas}}};
-</script>
-
-<script src="/js/painel-admin.js"></script>
 
 {{>rodape}}

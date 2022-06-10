@@ -111,7 +111,7 @@ app.post('/delete-entrega/:idEntrega/:idProduto/:categoria/:quantidade', (req, r
                         (parseInt(resultado[0].quantidade_disponivel) + parseInt(req.params.quantidade)) + 
                     " WHERE id = " + req.params.idProduto)
     })
-    res.redirect(307, '/painel-admin/' + diaAtual)
+    res.redirect(307, '/entregas/' + diaAtual)
 })
 
 app.get('/admin', (req, res) =>{
@@ -137,7 +137,7 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
         
         if (usuario == usuarioBD && senha == senhaBD) {
             console.log('Usuário ' + usuarioBD + ' autenticado')
-            res.redirect(307, '/painel-admin/' + diaAtual)
+            res.redirect(307, '/painel-admin')
         } else {
             console.log('Falha de autenticação')
             res.redirect('/admin')
@@ -146,13 +146,55 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
     })
 })
 
-app.post('/painel-admin/:diaAtual', (req, res) => {
+app.post('/painel-admin', (req, res) =>{
+    res.render('painel-admin')
+})
+
+app.post('/consultar/:categoria', (req, res) =>{
+    let categoria = req.params.categoria
+
+    switch (categoria) {
+        case 'entregas':
+            res.redirect(307, '/entregas/' + diaAtual)
+            break
+            case 'produtos':
+                console.log('CATEGORIA -> ' + categoria)
+                res.redirect(307, '/produtos')
+            break
+        case 'add-produtos':
+            console.log('CATEGORIA -> ' + categoria)
+            break
+        case 'add-funcionarios':
+            console.log('CATEGORIA -> ' + categoria)
+            break
+    }
+})
+
+app.post('/entregas/:diaAtual', (req, res) => {
     console.log('Mostrando tabela do dia ' + req.params.diaAtual);
     client.query("SELECT *, to_char(data_pedido, 'DD/MM/YYYY') AS data_pedido FROM entregas WHERE data_pedido = '" + req.params.diaAtual + "'").then(results =>{
         const resultado = results.rows
-        res.render('painel-admin', {
+        res.render('entregas', {
             dadosEntregas: JSON.stringify(resultado)
         } )
+    })
+})
+
+app.post('/produtos', (req, res) =>{
+    client.query("SELECT * FROM frutas").then(resultsFrutas =>{
+        const resultadoFrutas = resultsFrutas.rows
+        client.query("SELECT * FROM verduras").then(resultsVerduras =>{
+            const resultadoVerduras = resultsVerduras.rows
+            client.query("SELECT * FROM legumes").then(resultsLegumes =>{
+                const resultadoLegumes = resultsLegumes.rows
+                console.log(resultadoFrutas, resultadoVerduras, resultadoLegumes)
+                res.render('produtos', {
+                    dadosConsultaFrutas: resultadoFrutas,
+                    dadosConsultaVerduras: resultadoVerduras,
+                    dadosConsultaLegumes: resultadoLegumes
+                })
+            })
+        })
     })
 })
 

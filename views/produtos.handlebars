@@ -1,0 +1,106 @@
+{{>cabecalho}}
+
+<link rel="stylesheet" href="/css/produtos.css">
+
+<div class="produtos-content">
+    <div class="produtos-cabecalho">
+        <div class="cabecalho-titulo">
+            <h1>PRODUTOS</h1>
+        </div>
+    </div>
+    <div class="secao-produtos">
+        <div class="secao-titulo">
+            <h1>FRUTAS</h1>
+        </div>
+        <div class="secao-tabela">
+            <div class="tabelas">
+                <table border="1" id="tabela-produtos" class="tabela-produtos">
+                    <tr class="cabecalho-tabela">
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Nome Imagem</td>
+                        <td>Valor</td>
+                        <td>Unidade</td>
+                        <td>Quantidade Disponível</td>
+                        <td>Token</td>
+                    </tr>
+                    {{#each dadosConsultaFrutas}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td>{{this.nome}}</td>
+                            <td>{{this.nome_imagem}}</td>
+                            <td>{{this.valor}}</td>
+                            <td>{{this.unidade}}</td>
+                            <td>{{this.quantidade_disponivel}}</td>
+                            <td>{{this.token}}</td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+
+            <div class="secao-titulo">
+                <h1>VERDURAS</h1>
+            </div>
+            <div class="tabelas">
+                <table border="1" id="tabela-produtos" class="tabela-produtos">
+                    <tr class="cabecalho-tabela">
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Nome Imagem</td>
+                        <td>Valor</td>
+                        <td>Unidade</td>
+                        <td>Quantidade Disponível</td>
+                        <td>Token</td>
+                    </tr>
+                    {{#each dadosConsultaVerduras}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td>{{this.nome}}</td>
+                            <td>{{this.nome_imagem}}</td>
+                            <td>{{this.valor}}</td>
+                            <td>{{this.unidade}}</td>
+                            <td>{{this.quantidade_disponivel}}</td>
+                            <td>{{this.token}}</td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+
+            <div class="secao-titulo">
+                <h1>LEGUMES</h1>
+            </div>
+            <div class="tabelas">
+                <table border="1" id="tabela-produtos" class="tabela-produtos">
+                    <tr class="cabecalho-tabela">
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Nome Imagem</td>
+                        <td>Valor</td>
+                        <td>Unidade</td>
+                        <td>Quantidade Disponível</td>
+                        <td>Token</td>
+                    </tr>
+                    {{#each dadosConsultaLegumes}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td>{{this.nome}}</td>
+                            <td>{{this.nome_imagem}}</td>
+                            <td>{{this.valor}}</td>
+                            <td>{{this.unidade}}</td>
+                            <td>{{this.quantidade_disponivel}}</td>
+                            <td>{{this.token}}</td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let dadosProdutos = {{{dadosProdutos}}};
+</script>
+
+<script src=""></script>
+
+{{>rodape}}

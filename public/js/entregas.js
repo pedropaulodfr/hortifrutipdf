@@ -106,7 +106,7 @@ function alterarData(){
     if (dataSelecionada != '') {
         let formData = document.createElement('form');
     
-        formData.action = "/painel-admin/" + String(dataSelecionada);
+        formData.action = "/entregas/" + String(dataSelecionada);
         formData.method = 'post';
     
         document.getElementById('data').appendChild(formData);
