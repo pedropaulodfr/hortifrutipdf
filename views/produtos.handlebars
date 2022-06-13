@@ -23,6 +23,7 @@
                         <td>Unidade</td>
                         <td>Quantidade Disponível</td>
                         <td>Token</td>
+                        <td>Excluir Produto</td>
                     </tr>
                     {{#each dadosConsultaFrutas}}
                         <tr>
@@ -33,6 +34,9 @@
                             <td>{{this.unidade}}</td>
                             <td>{{this.quantidade_disponivel}}</td>
                             <td>{{this.token}}</td>
+                            <td id="coluna-excluir-frutas-{{this.id}}">
+                                <i class="bx bx-x btn-excluir" onclick="criarBotaoConfirmarExclusao({{this.id}}, 'frutas')"></i>
+                            </td>
                         </tr>
                     {{/each}}
                 </table>
@@ -51,6 +55,7 @@
                         <td>Unidade</td>
                         <td>Quantidade Disponível</td>
                         <td>Token</td>
+                        <td>Excluir Produto</td>
                     </tr>
                     {{#each dadosConsultaVerduras}}
                         <tr>
@@ -61,6 +66,9 @@
                             <td>{{this.unidade}}</td>
                             <td>{{this.quantidade_disponivel}}</td>
                             <td>{{this.token}}</td>
+                            <td id="coluna-excluir-verduras-{{this.id}}">
+                                <i class="bx bx-x btn-excluir" onclick="criarBotaoConfirmarExclusao({{this.id}}, 'verduras')"></i>
+                            </td>
                         </tr>
                     {{/each}}
                 </table>
@@ -79,6 +87,7 @@
                         <td>Unidade</td>
                         <td>Quantidade Disponível</td>
                         <td>Token</td>
+                        <td>Excluir Produto</td>
                     </tr>
                     {{#each dadosConsultaLegumes}}
                         <tr>
@@ -89,6 +98,9 @@
                             <td>{{this.unidade}}</td>
                             <td>{{this.quantidade_disponivel}}</td>
                             <td>{{this.token}}</td>
+                            <td id="coluna-excluir-legumes-{{this.id}}">
+                                <i class="bx bx-x btn-excluir" onclick="criarBotaoConfirmarExclusao({{this.id}}, 'legumes')"></i>
+                            </td>
                         </tr>
                     {{/each}}
                 </table>
@@ -97,10 +109,6 @@
     </div>
 </div>
 
-<script>
-    let dadosProdutos = {{{dadosProdutos}}};
-</script>
-
-<script src=""></script>
+<script src="/js/produtos.js"></script>
 
 {{>rodape}}

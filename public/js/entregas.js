@@ -34,7 +34,7 @@ function iniciarEntregas(){
             excluirEntrega.appendChild(botaoExcluir);
 
             botaoExcluir.addEventListener("click", () => {
-                criarBotaoExcluir(i, excluirEntrega, dadosEntregas);
+                criarBotaoConfirmarExclusao(i, excluirEntrega, dadosEntregas);
             })
     
             linha.appendChild(dadoData);
@@ -58,7 +58,7 @@ function iniciarEntregas(){
     }
 }
 
-function criarBotaoExcluir(i, coluna, dadosEntregas) {
+function criarBotaoConfirmarExclusao(i, coluna, dadosEntregas) {
     let tabela = document.getElementById('dados-entrega');
     
     let formExcluir = document.createElement('form');

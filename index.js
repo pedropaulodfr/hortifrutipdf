@@ -198,6 +198,12 @@ app.post('/produtos', (req, res) =>{
     })
 })
 
+app.post('/delete-produto/:id/:rota', (req, res) =>{
+    client.query("DELETE FROM " + req.params.rota + " WHERE id = " + req.params.id)
+    console.log('Deletado o produto id = ' +  req.params.id + " da rota " + req.params.rota)
+    res.redirect(307, '/produtos')
+})
+
 app.listen(porta, ()=>{
     console.log("Servidor rodando na porta http://localhost:" + porta);
 })
