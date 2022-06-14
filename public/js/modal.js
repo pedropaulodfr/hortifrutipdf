@@ -16,6 +16,19 @@ function iniciaModal(modalID) {
             modal.classList.remove('mostrar')
         }
     });
+
+    autoPreenchimento();
+}
+
+function autoPreenchimento() {
+    document.getElementById("input-nome").value = localStorage.getItem("nome");
+    document.getElementById("input-CPF").value = localStorage.getItem("CPF");
+    document.getElementById("input-telefone").value = localStorage.getItem("telefone");
+    document.getElementById("input-rua").value = localStorage.getItem("rua");
+    document.getElementById("input-bairro").value = localStorage.getItem("bairro");
+    document.getElementById("input-numero").value = localStorage.getItem("numero");
+    document.getElementById("input-cidade").value = localStorage.getItem("cidade");
+    document.getElementById("input-CEP").value = localStorage.getItem("CEP");
 }
 
 const btnComprar = document.getElementById('btn-comprar');
@@ -101,6 +114,15 @@ function salvarDados(nome, cpf, telefone, rua, numero, bairro, cidade, cep) {
     let form = document.getElementById('form-confirmar-dados-entrega');
 
     console.log(form);
+
+    localStorage.setItem("nome", nome.value);
+    localStorage.setItem("CPF", cpf.value);
+    localStorage.setItem("telefone", telefone.value);
+    localStorage.setItem("rua", rua.value);
+    localStorage.setItem("numero", numero.value);
+    localStorage.setItem("bairro", bairro.value);
+    localStorage.setItem("cidade", cidade.value);
+    localStorage.setItem("CEP", cep.value);
 
     h1.className = 'compra-finalizada-text';
     h2.className = 'compra-finalizada-text';
