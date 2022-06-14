@@ -47,19 +47,56 @@
     border: solid 1px #000000;
     text-align: center;
 }
+.btn-editar{
+    color: #000000;
+    font-size: 22px;
+    cursor: pointer;
+}
 .btn-excluir{
     color: red;
     font-size: 25px;
     font-weight: bold;
     cursor: pointer;
 }
-.confirmar-exclusao-container{
+.editar-atributo-container, .confirmar-exclusao-container{
     background-color: #008D60;
     border-radius: 10px;
+    max-width: 150px;
 }
-.confirmar-exclusao-titulo h5{
+.editar-atributo-titulo, .confirmar-exclusao-titulo h5{
     color: #ffffff;
     font-size: 12px;
+}
+.editar-atributo-botoes button{
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: none;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    transition: all .3s;
+}
+.editar-atributo-botoes button:hover{
+    transform: scale(1.1);
+}
+#btn-cancelar{
+    color: #ffffff;
+    background-color: rgb(255, 93, 93);
+}
+.novo-valor-container{
+    display: flex;
+}
+.btn-submit-novo-valor {
+    width: 30px;
+    height: 30px;
+    margin-top: 2px;
+    margin-left: 5px;
+    font-size: 20px;
+    vertical-align: middle;
+    padding: 0px;
+    color: #ffffff;
+    background-color: #008d60;
+    border: none;
+    border-radius: 5px;
 }
 .confirmar-exclusao-botoes i{
     font-size: 20px;
@@ -78,3 +115,8 @@
     opacity: 0;
     display: none;
 }
+.mostrar {
+    opacity: 1;
+    display: block;
+}
+

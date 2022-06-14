@@ -187,7 +187,7 @@ app.post('/produtos', (req, res) =>{
             const resultadoVerduras = resultsVerduras.rows
             client.query("SELECT * FROM legumes").then(resultsLegumes =>{
                 const resultadoLegumes = resultsLegumes.rows
-                console.log(resultadoFrutas, resultadoVerduras, resultadoLegumes)
+                //console.log(resultadoFrutas, resultadoVerduras, resultadoLegumes)
                 res.render('produtos', {
                     dadosConsultaFrutas: resultadoFrutas,
                     dadosConsultaVerduras: resultadoVerduras,
@@ -201,6 +201,23 @@ app.post('/produtos', (req, res) =>{
 app.post('/delete-produto/:id/:rota', (req, res) =>{
     client.query("DELETE FROM " + req.params.rota + " WHERE id = " + req.params.id)
     console.log('Deletado o produto id = ' +  req.params.id + " da rota " + req.params.rota)
+    res.redirect(307, '/produtos')
+})
+
+app.post('/editar-produto/:id/:rota/:atributo/:novoValor', (req, res) =>{
+    let id = req.params.id;
+    let rota = req.params.rota;
+    let atributo = req.params.atributo;
+    let novoValor = req.params.novoValor;
+
+    if (atributo == 'valor' || atributo == 'quantidade_disponivel') {
+        client.query("UPDATE " + rota + " SET " + atributo + " = '" + novoValor + "' WHERE id = " + id);
+        console.log("UPDATE " + rota + " SET " + atributo + " = " + novoValor + " WHERE id = " + id);
+    }else{
+        client.query("UPDATE " + rota + " SET " + atributo + " = '" + novoValor + "' WHERE id = " + id);
+        console.log("UPDATE " + rota + " SET " + atributo + " = '" + novoValor + "' WHERE id = " + id);
+    }
+    
     res.redirect(307, '/produtos')
 })
 
