@@ -160,9 +160,10 @@ app.post('/consultar/:categoria', (req, res) =>{
             case 'produtos':
                 console.log('CATEGORIA -> ' + categoria)
                 res.redirect(307, '/produtos')
-            break
-        case 'add-produtos':
-            console.log('CATEGORIA -> ' + categoria)
+                break
+                case 'add-produtos':
+                    console.log('CATEGORIA -> ' + categoria)
+                    res.redirect(307, '/add-produtos')
             break
         case 'add-funcionarios':
             console.log('CATEGORIA -> ' + categoria)
@@ -219,6 +220,31 @@ app.post('/editar-produto/:id/:rota/:atributo/:novoValor', (req, res) =>{
     }
     
     res.redirect(307, '/produtos')
+})
+
+app.post('/add-produtos', (req, res) => {
+    res.render("add-produtos")
+})
+
+app.post('/salvar-produtos/:nome/:categoria/:valor/:unidade/:quantDisp/:nomeImagem/:token', (req, res) => {
+    let nome = req.params.nome
+    let categoria = req.params.categoria
+    let valor = req.params.valor
+    let unidade = req.params.unidade
+    let quantDisp = req.params.quantDisp
+    let nomeImagem = req.params.nomeImagem
+    let token = req.params.token
+
+    console.log(nome, categoria, valor, unidade, quantDisp, nomeImagem, token);
+    
+    let sql = "INSERT INTO " + categoria + " (nome, nome_imagem, valor, token, unidade, quantidade_disponivel)" + 
+    " VALUES ($1, $2, $3, $4, $5, $6)"
+    let values = [nome, nomeImagem, valor, token, unidade, quantDisp]
+
+    client.query(sql, values)
+
+    console.log("Produto '" + nome + "' inserido com sucesso em " + categoria);
+
 })
 
 app.listen(porta, ()=>{

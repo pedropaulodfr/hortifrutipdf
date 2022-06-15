@@ -1,0 +1,111 @@
+{{>cabecalho}}
+
+<style>
+    .modal-dados-produto-container{
+        position: relative;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #008D60 0%, #569E75 100%);
+    }
+    .modal-dados-produto{
+        display: inline;
+        position: absolute;
+        width: 60vw;
+        height: 400px;
+        background-color: #ffffff;
+        border-radius: 15px;
+    }
+    .modal-dados-produto-titulo{
+        text-align: center;
+    }
+    .modal-dados-produto-campos{
+        position: absolute;
+        top: 80px;
+        left: 5%;
+        display: inline;
+    }
+    .modal-dados-produto-campos-lado{
+        display: flex;
+    }
+    .modal-dados-produto-campos-abaixo{
+        display: inline;
+    }
+    .input-campo{
+        display: flex;
+        margin-top: 5px;
+        margin-left: 20px;
+    }
+    .input-campo input{
+        margin-left: 20px;
+    }
+    #btn-confirmar-dados-produto{
+        text-align: center;
+    }
+    .erro{
+    border: solid 1px red;
+    }
+    .ocultar{
+        display: none;
+        opacity: 0;
+    }
+    .dados-inseridos-sucesso-content{
+        text-align: center;
+        margin-top: 130px;
+    }
+</style>
+
+<div id="modal-dados-produto-container" class="modal-dados-produto-container">
+    <div id="modal-dados-produto" class="modal-dados-produto">
+        <div id="modal-dados-produto-titulo" class="modal-dados-produto-titulo">
+            <h1>DADOS DO PRODUTO</h1>
+        </div>
+        <div id="modal-dados-produto-campos" class="modal-dados-produto-campos">
+            <div class="modal-dados-produto-campos-lado">
+                <div class="input-campo">
+                    <h3>Nome</h3>
+                    <input type="text" id="campo-nome" style="width: 250px;">
+                </div>
+                <div class="input-campo">
+                    <h3>Categoria</h3>
+                    <input type="text" id="campo-categoria">
+                </div>
+            </div>
+            <div class="modal-dados-produto-campos-lado">
+                <div class="input-campo">
+                    <h3>Valor</h3>
+                    <input type="text" id="campo-valor" style="width: 100px; margin-left: 33px;">
+                </div>
+                <div class="input-campo" style="margin-left: 173px;">
+                    <h3>Unidade</h3>
+                    <input type="text" id="campo-unidade" style="margin-left: 33px;">
+                </div>
+            </div>
+            <div class="modal-dados-produto-campos-abaixo">
+                <div class="input-campo">
+                    <h3>Quantidade disponível</h3>
+                    <input type="text" id="campo-quantidade-disponivel">
+                </div>
+                <div class="input-campo">
+                    <h3>Nome da imagem</h3>
+                    <input type="text" id="campo-nome-imagem" style="margin-left: 78px;">
+                </div>
+                <div class="input-campo">
+                    <h3>Token</h3>
+                    <input type="text" id="campo-token" style="width: 250px;">
+                </div>
+            </div>
+            <div id="btn-confirmar-dados-produto">
+                <input type="submit" id="" class="btn-comprar" value="Confirmar" onclick="verificarCamposDadosProdutos()">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/add-produtos.js"></script>
+
+{{>rodape}}
