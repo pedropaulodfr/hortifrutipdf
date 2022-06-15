@@ -111,7 +111,7 @@ function compraFinalizada() {
 
 function salvarDados(nome, cpf, telefone, rua, numero, bairro, cidade, cep) {
     let quantidade = document.querySelector('#quantidade').value;
-    let form = document.getElementById('form-confirmar-dados-entrega');
+    let form = document.createElement('form');
 
     console.log(form);
 
@@ -132,5 +132,10 @@ function salvarDados(nome, cpf, telefone, rua, numero, bairro, cidade, cep) {
         String(numero.value) + "/" + bairro.value + "/" + String(cidade.value).replace("/", "-") + "/" + 
         cep.value;
     form.method = 'post';
-    
+    form.id = "form-confirmar-dados-entrega";
+    form.className = "form-confirmar-dados-entrega";
+
+    document.getElementById("input-dados").appendChild(form);
+
+    form.submit();
 }
