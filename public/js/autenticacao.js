@@ -3,6 +3,8 @@ btnConfirmarAutenticacao.addEventListener("click", ()=>{
     verificarCamposAutenticacao();
 })
 
+document.getElementById('usuario').focus();
+
 function verificarCamposAutenticacao(){
     let usuario = document.getElementById('usuario');
     let senha = document.getElementById('senha');
@@ -27,3 +29,4 @@ function autenticacao(usuario, senha){
     form.submit();
     //window.location.href = '/autenticacao/' + usuario + '/' + senha
 }
+
