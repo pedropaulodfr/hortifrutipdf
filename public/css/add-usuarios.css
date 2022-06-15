@@ -1,4 +1,4 @@
-.modal-dados-produto-container{
+.modal-dados-usuarios-container{
     position: relative;
     top: 0px;
     left: 0px;
@@ -9,7 +9,7 @@
     justify-content: center;
     background: linear-gradient(180deg, #008D60 0%, #569E75 100%);
 }
-.modal-dados-produto{
+.modal-dados-usuarios{
     display: inline;
     position: absolute;
     width: 60vw;
@@ -17,37 +17,34 @@
     background-color: #ffffff;
     border-radius: 15px;
 }
-.modal-dados-produto-titulo{
+.modal-dados-usuarios-titulo{
     text-align: center;
-    color: #008D60;
     margin-top: 10px;
+    color: #008D60;
 }
-.modal-dados-produto-campos{
+.modal-dados-usuarios-campos{
+    display: inline;
     position: absolute;
-    top: 80px;
-    left: 5%;
-    display: inline;
+    top: 110px;
+    left: 20%;
 }
-.modal-dados-produto-campos-lado{
+.campos{
     display: flex;
+    align-items: center;
 }
-.modal-dados-produto-campos-abaixo{
-    display: inline;
+.campos input{
+    margin-left: 30px;
 }
-.input-campo{
+.botao-confirmar{
     display: flex;
-    margin-top: 5px;
-    margin-left: 20px;
-}
-.input-campo input, select{
-    margin-left: 20px;
-}
-#btn-confirmar-dados-produto{
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    margin-top: 30px;
 }
 .erro{
-border: solid 1px red;
-}
+    border: solid 1px red;
+    }
 .ocultar{
     display: none;
     opacity: 0;

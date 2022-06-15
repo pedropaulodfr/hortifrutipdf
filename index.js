@@ -137,7 +137,7 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
         
         if (usuario == usuarioBD && senha == senhaBD) {
             console.log('Usuário ' + usuarioBD + ' autenticado')
-            res.redirect(307, '/painel-admin')
+            res.redirect(307, '/painel-admin/' + usuarioBD)
         } else {
             console.log('Falha de autenticação')
             res.redirect('/admin')
@@ -146,8 +146,19 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
     })
 })
 
-app.post('/painel-admin', (req, res) =>{
-    res.render('painel-admin')
+app.post('/painel-admin/:usuario', (req, res) =>{
+    client.query("SELECT superuser FROM usuarios WHERE nome_usuario = '" + req.params.usuario + "'").then(results =>{
+        const resultado = results.rows
+        console.log(resultado[0].superuser);
+
+        if (resultado[0].superuser == 1) {
+            res.render('painel-admin', {
+                superUser: resultado
+            })
+        } else {
+            res.render('painel-admin')
+        }
+    })
 })
 
 app.post('/consultar/:categoria', (req, res) =>{
@@ -157,16 +168,17 @@ app.post('/consultar/:categoria', (req, res) =>{
         case 'entregas':
             res.redirect(307, '/entregas/' + diaAtual)
             break
-            case 'produtos':
-                console.log('CATEGORIA -> ' + categoria)
-                res.redirect(307, '/produtos')
-                break
-                case 'add-produtos':
-                    console.log('CATEGORIA -> ' + categoria)
-                    res.redirect(307, '/add-produtos')
+        case 'produtos':
+            console.log('CATEGORIA -> ' + categoria)
+            res.redirect(307, '/produtos')
+            break
+        case 'add-produtos':
+            console.log('CATEGORIA -> ' + categoria)
+            res.redirect(307, '/add-produtos')
             break
         case 'add-funcionarios':
             console.log('CATEGORIA -> ' + categoria)
+            res.redirect(307, '/add-usuarios')
             break
     }
 })
@@ -235,8 +247,6 @@ app.post('/salvar-produtos/:nome/:categoria/:valor/:unidade/:quantDisp/:nomeImag
     let nomeImagem = req.params.nomeImagem
     let token = req.params.token
 
-    console.log(nome, categoria, valor, unidade, quantDisp, nomeImagem, token);
-    
     let sql = "INSERT INTO " + categoria + " (nome, nome_imagem, valor, token, unidade, quantidade_disponivel)" + 
     " VALUES ($1, $2, $3, $4, $5, $6)"
     let values = [nome, nomeImagem, valor, token, unidade, quantDisp]
@@ -247,6 +257,24 @@ app.post('/salvar-produtos/:nome/:categoria/:valor/:unidade/:quantDisp/:nomeImag
 
 })
 
+app.post('/add-usuarios', (req, res) =>{
+    res.render('add-usuarios')
+})
+
+app.post('/salvar-usuarios/:nome/:cpf/:username/:senha', (req, res) =>{
+    let nome = req.params.nome
+    let cpf = req.params.cpf
+    let username = req.params.username
+    let senha = req.params.senha
+
+    let sql = "INSERT INTO usuarios VALUES ($1, $2, $3, $4)"
+    let values = [nome, cpf, username, senha]
+
+    client.query(sql, values)
+
+    console.log("Usuário '" + username + "' cadastrado");
+})
+
 app.listen(porta, ()=>{
-    console.log("Servidor rodando na porta http://localhost:" + porta);
+    console.log("Servidor rodando na porta http://localhost:" + porta)
 })

@@ -25,29 +25,28 @@ function verificarCamposDadosProdutos() {
     }else{
         salvarDados(campoNome, campoCategoria, campoValor, campoUnidade, campoQuantidadeDisponivel, 
             campoNomeImagem, campoToken);
-        }
     }
+}
     
-    function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nomeImagem, token) {
-        let divContainer = document.getElementById("modal-dados-produto-container");
-        console.log(divContainer);
-        
-        let form = document.createElement("form");
-        
-        form.action = "/salvar-produtos/"+ nome.value + "/" + categoria.value + "/" +  valor.value + "/" + 
-        unidade.value + "/" + quantidadeDisponivel.value + "/" + nomeImagem.value + "/" + token.value;
-        form.method = 'post';
-        
-        divContainer.appendChild(form);
-        
-        notificacaoDadosInseridos(nome, categoria);
+function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nomeImagem, token) {
+    let divContainer = document.getElementById("modal-dados-produto-container");
+    console.log(divContainer);
+    
+    let form = document.createElement("form");
+    
+    form.action = "/salvar-produtos/"+ nome.value + "/" + categoria.value + "/" +  valor.value + "/" + 
+    unidade.value + "/" + quantidadeDisponivel.value + "/" + nomeImagem.value + "/" + token.value;
+    form.method = 'post';
+    
+    divContainer.appendChild(form);
+    
+    notificacaoDadosInseridos(nome, categoria);
+    
     form.submit();
-    
 }
 
 function notificacaoDadosInseridos(nome, categoria) {
     document.getElementById("modal-dados-produto-campos").classList.add('ocultar');
-    document.getElementById("modal-dados-produto-titulo").classList.add('ocultar');
 
     let divDadosInseridos = document.createElement("div");
     let h2 = document.createElement("h2");

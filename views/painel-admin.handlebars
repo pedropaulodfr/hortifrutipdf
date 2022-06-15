@@ -1,56 +1,6 @@
 {{>cabecalho}}
 
-<style>
-    .categorias-container{
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 500px;
-        background: linear-gradient(180deg, #008D60 0%, #569E75 100%);
-    }
-    .categorias{
-        position: absolute;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        width: 60vw;
-        height: 400px;
-        background-color: #ffffff;
-        border-radius: 15px;
-    }
-    .categorias a{
-        text-decoration: none;
-    }
-    .box-categorias{
-        background-color: #224B3E;
-        border-radius: 10px;
-        width: 170px;
-        height:150px;
-        margin-left: 60px;
-        cursor: pointer;
-        transition: all .3s;
-    }
-    .box-categorias:hover{
-        transform: scale(1.05);
-    }
-    .box-categorias img{
-        margin-top: 20px;
-        margin-left: 42px;
-        max-width: 80px;
-        max-height: 80px;
-        width: auto;
-        height: auto;
-    }
-    .box-categorias h5{
-        margin-top: 9px;
-        font-size: 20px;
-        color: #ffffff;
-        text-align: center;
-    }
-</style>
+<link rel="stylesheet" href="/css/painel-admin.css">
 
 <div class="categorias-container">
     <div class="categorias">
@@ -78,14 +28,18 @@
                     </div>
                 </a>
             </form>
-            <form action="consultar/add-funcionarios" method="post" id="form-add-funcionarios">
-                <a href="javascript:document.getElementById('form-add-funcionarios').submit();">
-                    <div class="box-categorias">
-                        <img src="/images/icons/add-funcionarios.png" alt="" srcset="">
-                        <h5>Add Funcionários</h5>
-                    </div>
-                </a>
-            </form>
+            {{#each superUser}}
+                {{#if superuser}}
+                    <form action="consultar/add-funcionarios" method="post" id="form-add-funcionarios">
+                        <a href="javascript:document.getElementById('form-add-funcionarios').submit();">
+                            <div class="box-categorias">
+                                <img src="/images/icons/add-funcionarios.png" alt="" srcset="">
+                                <h5>Add Funcionários</h5>
+                            </div>
+                        </a>
+                    </form>
+                {{/if}}
+            {{/each}}
     </div>
 </div>
 
