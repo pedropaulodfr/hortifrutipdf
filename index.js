@@ -149,7 +149,6 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
 app.post('/painel-admin/:usuario', (req, res) =>{
     client.query("SELECT superuser FROM usuarios WHERE nome_usuario = '" + req.params.usuario + "'").then(results =>{
         const resultado = results.rows
-        console.log(resultado[0].superuser);
 
         if (resultado[0].superuser == 1) {
             res.render('painel-admin', {
@@ -176,7 +175,7 @@ app.post('/consultar/:categoria', (req, res) =>{
             console.log('CATEGORIA -> ' + categoria)
             res.redirect(307, '/add-produtos')
             break
-        case 'add-funcionarios':
+        case 'add-usuarios':
             console.log('CATEGORIA -> ' + categoria)
             res.redirect(307, '/add-usuarios')
             break
