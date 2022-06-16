@@ -12,7 +12,6 @@ function deletarProduto(id, categoria) {
 }
 
 function editarAtributo(atributo, id, categoria) {
-    console.log(atributo, id, categoria);
     let pegarNovoValor = document.querySelector("#novo-valor-campo").value;
 
     let tabela = document.getElementById("tabela-produtos");
@@ -23,7 +22,6 @@ function editarAtributo(atributo, id, categoria) {
     form.method = "post";
 
     tabela.appendChild(form);
-    console.log(atributo);
     form.submit();
 }
 
@@ -111,13 +109,14 @@ function criarElementosEditarAtributo(id, categoria) {
         document.getElementById("coluna-" + categoria + "-" + atributo + "-" + id).appendChild(divNovoValor);
         
         campoNovoValor.focus();
-        btnSubmitNovoValor.addEventListener("click", () => {editarAtributo(atributo, id, categoria)});
+        btnSubmitNovoValor.addEventListener("click", () => {
+            editarAtributo(atributo, id, categoria)
+        });
     }
 
     btnNome.addEventListener("click", () => {
         criarCampoInserirNovoValor("nome", id);
     });
-
     btnImagem.addEventListener("click", () => {
         criarCampoInserirNovoValor("nome_imagem", id);
     });
@@ -153,5 +152,4 @@ function criarElementosEditarAtributo(id, categoria) {
         divEditarAtributoContent.classList.add('ocultar');
         document.location.reload(true);
     })
-
 }
