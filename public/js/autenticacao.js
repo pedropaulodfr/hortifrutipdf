@@ -29,4 +29,3 @@ function autenticacao(usuario, senha){
     form.submit();
     //window.location.href = '/autenticacao/' + usuario + '/' + senha
 }
-

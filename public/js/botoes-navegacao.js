@@ -28,6 +28,6 @@ function bloquearRetroceder() {
     window.history.forward();
 }
 
-window.onload = bloquearRetroceder;
+//window.onload = bloquearRetroceder;
 
 
