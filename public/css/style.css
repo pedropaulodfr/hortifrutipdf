@@ -17,34 +17,41 @@ body{
 }
 #main-intro{
     position: relative; 
-    width:100%;
-    height:300px;
+    width:100vw;
+    height:45.9vh;
     background: url('https://pbs.twimg.com/media/FHSp0caWQAIgkJy?format=jpg&name=large');
     background-position: 0px -550px;
     background-repeat: repeat-x;
     box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.1);
-    margin-bottom: 5px;
+    margin-bottom: clamp(.1vh, .3vh, .8vh);
 }
 #title{
     position: absolute;
-    top: 90px;
-    left: 220px;
-    font-size: 100px;
+    top: 14vh;
+    left: 16vw;
+    font-size: clamp(4vw, 7.1vw, 7.1vw);
     color: white;
     cursor: pointer;
     transition: all 1s ease;
 }
 #title:hover{
-    font-size: 105px;
+    font-size: clamp(7vw, 8vw, 8vw);
 }
 #post-info{
     position: absolute;
-    top: 60px;
-    left: 68%;
-    width: 320px;
-    height: 190px;
+    /*top: 60px;*/
+    top: 4.5vw;
+    /*left: 68%;*/
+    left: 67vw;
+    /*width: 320px;*/
+    width: 23.5vw;
+    /*height: 190px;*/
+    height: 29.3vh;
+    min-width: 12vw;
+    min-height: 12vw;
     text-align: center;
-    border-radius: 50px;
+    /*border-radius: 50px;*/
+    border-radius: 3.8vw;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(3px);
     box-shadow: 0px 1px 30px 1px rgb(0, 0, 0);
@@ -56,23 +63,32 @@ body{
 }
 #oferta-txt{
     color: white;
-    font-size: 30px;
+    /*font-size: 30px;
+    font-size: 2vw;*/
+    font-size: clamp(1.9vw, 2vw, 2vw);
 }
 #oferta-img{
     position: relative;
-    top: 20px;
-    max-width: 160px;
-    max-height: 180px;
+    /*top: 20px;*/
+    top: 3vh;
+    /*max-width: 160px;
+    max-height: 160px;*/
+    max-width: 12vw;
+    max-height: 12vw;
+    min-width: 8vw;
+    min-height: 8vw;
 }
 .ofertas-slide{
-    margin-bottom: 5px;
+    margin-bottom: clamp(.1vh, .3vh, .8vh);
 }
 #content{
     position: relative;
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 500px;
+    width: 100vw;
+    height: auto;
     background: rgb(86,158,117);
     background: linear-gradient(0deg, rgba(86,158,117,1) 0%, rgba(0,141,96,1) 100%);
 }
@@ -82,9 +98,11 @@ body{
 }
 .blocos{
     position: relative;
-    top: 20px;
-    width: 380px;
-    height: 350px;
+    top: 0px;
+    width: 28vw;
+    height: 53vh;
+    min-width: 300px;
+    min-height: 300px;
     margin: 30px;
     padding: 10px;
     background-color: white;
@@ -99,54 +117,74 @@ body{
 }
 .blocos img{
     position: relative;
-    top: 20px;
-    max-width: 250px;
-    max-height: 250px;
+    top: 3vh;
+    max-width: 38vw;
+    max-height: 38vh;
+    min-width: 150px;
+    min-height: 150px;
 }
 .blocos:hover{
     transform: scale(1.05);
 }
-#our-space{
+.our-space{
     position: relative;
-    width: 100%;
-    height: 367px;
+    top: 0vh;
+    left: 0vw;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    /*height: 367px;*/
+    height: 56vh;
+    max-height: 300px;
+    transition: all 1s;
 }
 #nosso-espaco-img{
     position: absolute;
-    width: 100%;
-    height: 367px;
+    width: 100vw;
+    height: 56vh;
     max-width: 100%;
-    max-height: 800px;
+    max-height: 300px;
     filter: opacity(0.3);
     transition: all 1s;
 }
-#our-space:hover #nosso-espaco-img{
+.our-space:hover #nosso-espaco-img{
     filter: opacity(1);
     transform: scale(1.1);
 }
-#our-space:hover div{
+.our-space:hover div{
     opacity: 0;
-}
-#our-space div{
-    transition: all 1s;
 }
 #our-space h1{
     position: relative;
-    top: 20px;
     font-size: 50px;
     text-align: center;
-    letter-spacing: 15px;
+    letter-spacing: 1.6vw;
+}
+.locale-content{
+    position: absolute;
+    top: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.locale{
+    margin-top: 24vh;
+    margin-left: 6vw;
+    justify-content: center;
+    text-align: center;
+    width: 50vw;
+    height: 16vh;
 }
 #fig-locale{
-    position: relative;
-    top: 170px;
     max-width: 50px;
     min-height: 50px;
-    left: 50%;
 }
-#our-space h2{
-    position: relative;
-    top: 180px;
+.endereco{
+    display: flex;
+    justify-content: center;
+}
+.endereco h2{
+    margin-top: 25vh;
     font-size: 20px;
     text-align: center;
     letter-spacing: 3px;
