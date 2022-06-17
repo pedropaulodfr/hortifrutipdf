@@ -48,7 +48,7 @@ body{
     /*width: 320px;*/
     width: 23.5vw;
     /*height: 190px;*/
-    height: 29.3vh;
+    height: min(190px, 29.3vh);
     /*min-width: 12vw;*/
     text-align: center;
     /*border-radius: 50px;*/
