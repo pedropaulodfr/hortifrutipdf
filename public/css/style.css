@@ -18,7 +18,8 @@ body{
 #main-intro{
     position: relative; 
     width:100vw;
-    height:45.9vh;
+    /*height:45.9vh;*/
+    height: 45.9vh;
     background: url('https://pbs.twimg.com/media/FHSp0caWQAIgkJy?format=jpg&name=large');
     background-position: 0px -550px;
     background-repeat: repeat-x;
@@ -29,7 +30,8 @@ body{
     position: absolute;
     top: 14vh;
     left: 16vw;
-    font-size: clamp(4vw, 7.1vw, 7.1vw);
+    /*font-size: clamp(4vw, 7.1vw, 7.1vw);*/
+    font-size: max(40px, 7vw);
     color: white;
     cursor: pointer;
     transition: all 1s ease;
@@ -47,8 +49,7 @@ body{
     width: 23.5vw;
     /*height: 190px;*/
     height: 29.3vh;
-    min-width: 12vw;
-    min-height: 12vw;
+    /*min-width: 12vw;*/
     text-align: center;
     /*border-radius: 50px;*/
     border-radius: 3.8vw;
@@ -65,7 +66,7 @@ body{
     color: white;
     /*font-size: 30px;
     font-size: 2vw;*/
-    font-size: clamp(1.9vw, 2vw, 2vw);
+    font-size: max(20px, 2vw)
 }
 #oferta-img{
     position: relative;
@@ -126,6 +127,57 @@ body{
 .blocos:hover{
     transform: scale(1.05);
 }
+
+.nosso-espaco-container{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 43vh;
+    transition: all 1s;
+}
+.nosso-espaco-container img{
+    position: absolute;
+    left: 0vw;
+    width: 100vw;
+    height: 56vh;
+    max-width: 100%;
+    max-height: 100%;
+    filter: opacity(0.3);
+    transition: all 1s;
+}
+.nosso-espaco-container:hover img{
+    filter: opacity(1);
+    transform: scale(1.1);
+}
+.nosso-espaco-container:hover div{
+    opacity: 0;
+    transition:ease-in-out all 1s;
+}
+.nosso-espaco{
+    display: inline;
+}
+.nosso-espaco-titulo{
+    position: relative;
+    top: 2vh;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 15px;
+}
+.nosso-espaco-localizacao{
+    position: relative;
+    top: 12vh;
+    display: inline;
+    text-align: center;
+    margin-left: 45%;
+}
+.nosso-espaco-localizacao i{
+    font-size: 50px;
+}
+.nosso-espaco-localizacao h2{
+    font-size: 30px;
+}
+
+/*
 .our-space{
     position: relative;
     top: 0vh;
@@ -133,7 +185,6 @@ body{
     display: flex;
     justify-content: center;
     width: 100vw;
-    /*height: 367px;*/
     height: 56vh;
     max-height: 300px;
     transition: all 1s;
@@ -188,7 +239,7 @@ body{
     font-size: 20px;
     text-align: center;
     letter-spacing: 3px;
-}
+}*/
 footer{
     position: relative;
     text-align: center;
