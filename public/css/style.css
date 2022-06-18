@@ -59,7 +59,7 @@ body{
     cursor: pointer;
     transition: all .2s;
 }
-#post-info:hover{
+.post-info:hover{
     animation: tremer .3s reverse;
 }
 #oferta-txt{
