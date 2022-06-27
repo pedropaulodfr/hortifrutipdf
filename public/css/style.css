@@ -18,7 +18,7 @@ body{
 #main-intro{
     position: relative; 
     width:100vw;
-    height: 45.9vh;
+    height: 45.9vh; 
     background: url('https://pbs.twimg.com/media/FHSp0caWQAIgkJy?format=jpg&name=large');
     background-position: 0px -550px;
     background-repeat: repeat-x;
@@ -195,6 +195,9 @@ footer h2{
 }
 
 @media(max-width: 800px){
+    #main-intro{
+        height: 25vh; 
+    }
     .post-info{
         height: 20vh;
     }
