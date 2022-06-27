@@ -18,7 +18,6 @@ body{
 #main-intro{
     position: relative; 
     width:100vw;
-    /*height:45.9vh;*/
     height: 45.9vh;
     background: url('https://pbs.twimg.com/media/FHSp0caWQAIgkJy?format=jpg&name=large');
     background-position: 0px -550px;
@@ -30,7 +29,6 @@ body{
     position: absolute;
     top: 14vh;
     left: 16vw;
-    /*font-size: clamp(4vw, 7.1vw, 7.1vw);*/
     font-size: max(40px, 7vw);
     color: white;
     cursor: pointer;
@@ -41,17 +39,11 @@ body{
 }
 .post-info{
     position: absolute;
-    /*top: 60px;*/
     top: 4.5vw;
-    /*left: 68%;*/
     left: 67vw;
-    /*width: 320px;*/
     width: 23.5vw;
-    /*height: 190px;*/
-    /*min-width: 12vw;*/
     height: 29vh;
     text-align: center;
-    /*border-radius: 50px;*/
     border-radius: 3.8vw;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(3px);
@@ -64,16 +56,11 @@ body{
 }
 #oferta-txt{
     color: white;
-    /*font-size: 30px;
-    font-size: 2vw;*/
     font-size: max(20px, 2vw)
 }
 .post-info img{
     position: relative;
-    /*top: 20px;*/
     top: 3vh;
-    /*max-width: 160px;
-    max-height: 160px;*/
     max-width: 18vw;
     max-height: 18vh;
     width: auto;
@@ -165,7 +152,8 @@ body{
 }
 .nosso-espaco-localizacao{
     position: relative;
-    top: 12vh;
+    top: 22vh;
+    letter-spacing: .3vw;
     display: inline;
     text-align: center;
     margin-left: 45%;
@@ -177,69 +165,6 @@ body{
     font-size: 30px;
 }
 
-/*
-.our-space{
-    position: relative;
-    top: 0vh;
-    left: 0vw;
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 56vh;
-    max-height: 300px;
-    transition: all 1s;
-}
-#nosso-espaco-img{
-    position: absolute;
-    width: 100vw;
-    height: 56vh;
-    max-width: 100%;
-    max-height: 300px;
-    filter: opacity(0.3);
-    transition: all 1s;
-}
-.our-space:hover #nosso-espaco-img{
-    filter: opacity(1);
-    transform: scale(1.1);
-}
-.our-space:hover div{
-    opacity: 0;
-}
-#our-space h1{
-    position: relative;
-    font-size: 50px;
-    text-align: center;
-    letter-spacing: 1.6vw;
-}
-.locale-content{
-    position: absolute;
-    top: 3vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.locale{
-    margin-top: 24vh;
-    margin-left: 6vw;
-    justify-content: center;
-    text-align: center;
-    width: 50vw;
-    height: 16vh;
-}
-#fig-locale{
-    max-width: 50px;
-    min-height: 50px;
-}
-.endereco{
-    display: flex;
-    justify-content: center;
-}
-.endereco h2{
-    margin-top: 25vh;
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 3px;
-}*/
 footer{
     position: relative;
     text-align: center;
@@ -267,4 +192,17 @@ footer h2{
     text-decoration: none;
     padding-left: 20px;
     color: white;
+}
+
+@media(max-width: 800px){
+    .post-info{
+        height: 20vh;
+    }
+    .nosso-espaco-localizacao{
+        top: 15vh;
+        letter-spacing: .3vw;
+    }
+    .nosso-espaco-localizacao h2{
+        font-size: 20px;
+    }
 }
