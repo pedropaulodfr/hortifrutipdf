@@ -1,0 +1,33 @@
+{{>cabecalho}}
+
+<link rel="stylesheet" href="/css/autenticacao.css">
+
+<div id="autenticacao-container" class="autenticacao-container">
+    <div class="autenticacao">
+        <div class="autenticacao-cabecalho">
+            <img src="/images/admin.png" alt="" srcset="">
+            <h1>PAINEL ADMINISTRATIVO</h1>
+        </div>
+        <div class="autenticacao-campos">
+            <div class="campo-nome">
+                <h3>Usuário</h3>
+                <span class="leading-icon">
+                    <i class='bx bx-user'></i>
+                </span>
+                <input type="text" id="usuario" class="campo" placeholder="Usuário">
+            </div>
+            <div class="campo-senha">
+                <h3>Senha</h3>
+                <span class="leading-icon">
+                    <i class='bx bx-lock-alt'></i>
+                </span>
+                <input type="password" id="senha" class="campo" placeholder="Senha">
+            </div>
+            <button id="btn-confirmar-autenticacao">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/autenticacao.js"></script>
+
+{{>rodape}}

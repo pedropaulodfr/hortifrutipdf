@@ -1,0 +1,48 @@
+{{>cabecalho}}
+
+<script src="/js/painel-admin.js"></script>
+
+<link rel="stylesheet" href="/css/painel-admin.css">
+
+<div class="categorias-container">
+    <div class="categorias">
+            <form action="/consultar/entregas" method="post" id="form-entregas">
+                <a href="javascript:document.getElementById('form-entregas').submit();">
+                    <div class="box-categorias">
+                        <img src="/images/icons/entregas.png" alt="" srcset="">
+                        <h5>Entregas</h5>
+                    </div>
+                </a>
+            </form>
+            <form action="/consultar/produtos" method="post" id="form-produtos">
+                <a href="javascript:document.getElementById('form-produtos').submit();">
+                    <div class="box-categorias">
+                        <img src="/images/icons/produtos.png" alt="" srcset="">
+                        <h5>Produtos</h5>
+                    </div>
+                </a>
+            </form>
+            <form action="/consultar/add-produtos" method="post" id="form-add-produtos">
+                <a href="javascript:document.getElementById('form-add-produtos').submit();">
+                    <div class="box-categorias">
+                        <img src="/images/icons/add-produtos.png" alt="" srcset="">
+                        <h5>Add Produtos</h5>
+                    </div>
+                </a>
+            </form>
+            {{#each superUser}}
+                {{#if superuser}}
+                    <form action="/consultar/add-usuarios" method="post" id="form-add-funcionarios">
+                        <a href="javascript:document.getElementById('form-add-funcionarios').submit();">
+                            <div class="box-categorias">
+                                <img src="/images/icons/add-funcionarios.png" alt="" srcset="">
+                                <h5>Add Funcionários</h5>
+                            </div>
+                        </a>
+                    </form>
+                {{/if}}
+            {{/each}}
+    </div>
+</div>
+
+{{>rodape}}

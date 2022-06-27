@@ -1,0 +1,118 @@
+{{>cabecalho}}
+{{>botoes-navegacao}}
+
+<link rel="stylesheet" href="/css/produtos.css">
+
+<div class="produtos-content">
+    <div class="produtos-cabecalho">
+        <div class="cabecalho-titulo">
+            <h1>PRODUTOS</h1>
+        </div>
+    </div>
+    <div class="secao-produtos">
+        <div class="secao-titulo">
+            <h1>FRUTAS</h1>
+        </div>
+        <div class="secao-tabela">
+            <div id="frutas" class="tabelas">
+                <table border="1" id="tabela-produtos" class="tabela-produtos">
+                    <tr class="cabecalho-tabela">
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Nome Imagem</td>
+                        <td>Valor</td>
+                        <td>Unidade</td>
+                        <td>Quantidade Disponível</td>
+                        <td>Token</td>
+                        <td>Editar Produtos</td>
+                    </tr>
+                    {{#each dadosConsultaFrutas}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td id="coluna-frutas-nome-{{this.id}}" class="coluna-frutas-nome-{{this.id}}">{{this.nome}}</td>
+                            <td id="coluna-frutas-nome_imagem-{{this.id}}">{{this.nome_imagem}}</td>
+                            <td id="coluna-frutas-valor-{{this.id}}">{{this.valor}}</td>
+                            <td id="coluna-frutas-unidade-{{this.id}}">{{this.unidade}}</td>
+                            <td id="coluna-frutas-quantidade_disponivel-{{this.id}}">{{this.quantidade_disponivel}}</td>
+                            <td id="coluna-frutas-token-{{this.id}}">{{this.token}}</td>
+                            <td id="coluna-frutas-frutas-{{this.id}}">
+                                <i class="bx bx-edit btn-editar" id="btn-editar" onclick="criarElementosEditarAtributo({{this.id}}, 'frutas')"></i>
+                                <i class="bx bx-x btn-excluir" onclick="criarBotaoConfirmarExclusao({{this.id}}, 'frutas')"></i>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+
+            <div class="secao-titulo">
+                <h1>VERDURAS</h1>
+            </div>
+            <div class="tabelas">
+                <table border="1" id="tabela-produtos" class="tabela-produtos">
+                    <tr class="cabecalho-tabela">
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Nome Imagem</td>
+                        <td>Valor</td>
+                        <td>Unidade</td>
+                        <td>Quantidade Disponível</td>
+                        <td>Token</td>
+                        <td>Excluir Produto</td>
+                    </tr>
+                    {{#each dadosConsultaVerduras}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td id="coluna-verduras-nome-{{this.id}}" class="coluna-verduras-nome-{{this.id}}">{{this.nome}}</td>
+                            <td id="coluna-verduras-nome_imagem-{{this.id}}">{{this.nome_imagem}}</td>
+                            <td id="coluna-verduras-valor-{{this.id}}">{{this.valor}}</td>
+                            <td id="coluna-verduras-unidade-{{this.id}}">{{this.unidade}}</td>
+                            <td id="coluna-verduras-quantidade_disponivel-{{this.id}}">{{this.quantidade_disponivel}}</td>
+                            <td id="coluna-verduras-token-{{this.id}}">{{this.token}}</td>
+                            <td id="coluna-verduras-verduras-{{this.id}}">
+                                <i class="bx bx-edit btn-editar" id="btn-editar" onclick="criarElementosEditarAtributo({{this.id}}, 'verduras')"></i>
+                                <i class="bx bx-x btn-excluir" onclick="criarBotaoConfirmarExclusao({{this.id}}, 'verduras')"></i>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+
+            <div class="secao-titulo">
+                <h1>LEGUMES</h1>
+            </div>
+            <div class="tabelas">
+                <table border="1" id="tabela-produtos" class="tabela-produtos">
+                    <tr class="cabecalho-tabela">
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>Nome Imagem</td>
+                        <td>Valor</td>
+                        <td>Unidade</td>
+                        <td>Quantidade Disponível</td>
+                        <td>Token</td>
+                        <td>Editar Produtos</td>
+                    </tr>
+                    {{#each dadosConsultaLegumes}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td id="coluna-legumes-nome-{{this.id}}" class="coluna-legumes-nome-{{this.id}}">{{this.nome}}</td>
+                            <td id="coluna-legumes-nome_imagem-{{this.id}}">{{this.nome_imagem}}</td>
+                            <td id="coluna-legumes-valor-{{this.id}}">{{this.valor}}</td>
+                            <td id="coluna-legumes-unidade-{{this.id}}">{{this.unidade}}</td>
+                            <td id="coluna-legumes-quantidade_disponivel-{{this.id}}">{{this.quantidade_disponivel}}</td>
+                            <td id="coluna-legumes-token-{{this.id}}">{{this.token}}</td>
+                            <td id="coluna-legumes-legumes-{{this.id}}">
+                                <i class="bx bx-edit btn-editar" id="btn-editar" onclick="criarElementosEditarAtributo({{this.id}}, 'legumes')"></i>
+                                <i class="bx bx-x btn-excluir" onclick="criarBotaoConfirmarExclusao({{this.id}}, 'legumes')"></i>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/produtos.js"></script>
+
+{{>rodape}}

@@ -1,0 +1,61 @@
+{{>cabecalho}}
+{{>slide}}
+
+<link rel="stylesheet" href="/css/comprar.css">
+<link rel="stylesheet" href="/css/modal.css">
+
+<h1 class="nome-secao" style="margin-left: 50px">Produto</h1>
+<div class="comprar-produto" id="comprar-produto">
+    <div class="img-produto" id="img-produto"></div>
+    <div class="info-produto" id="info-produto"></div>
+    <div class="valor-total" id="valor-total">
+        <h1 style="color: #008d60;">Valor Total</h1>
+        <h2 id="campo-valor-total" class="campo-valor-total"></h2>
+        <input type="submit" id="btn-comprar" class="btn-comprar" value="Comprar">
+    </div>
+</div>
+
+<script>
+    let parametros = {{{parametros}}};
+</script>
+<script src="/js/comprar.js"></script>
+
+{{>rodape}}
+
+<div id="content-modal-entrega" class="content-modal-entrega">
+    <div id="modal-entrega" class="modal-entrega">
+        <button class="btn-close" id="btn-close"></button>
+        <h1 id="titulo-modal-entrega">DADOS DA ENTREGA</h1>
+        <div id="input-dados">
+            <div class="input-dados-group">
+                <h3>Nome</h3>
+                <input type="text" class="campo" id="input-nome" style="width: 600px">
+            </div>       
+            <div class="input-dados-group">
+                <h3>CPF</h3>
+                <input type="text" class="campo" id="input-CPF" style="margin-left: 80px">
+                <h3>Telefone</h3>
+                <input type="text" class="campo" id="input-telefone" style="width: 205px">
+            </div>
+            <div class="input-dados-group">
+                <h3>Rua</h3>
+                <input type="text" class="campo" id="input-rua"  style="margin-left: 80px">
+                <h3>Número</h3>
+                <input type="number" class="campo" id="input-numero" min="0" style="width: 205px; margin-left: 52px">
+            </div>
+            <div class="input-dados-group">
+                <h3>Bairro</h3>
+                <input type="text" class="campo" id="input-bairro" style="margin-left: 53px">
+                <h3>Cidade</h3>
+                <input type="text" class="campo" id="input-cidade" style="width: 205px; margin-left: 68px">
+            </div>
+            <div class="input-dados-group">
+                <h3>CEP</h3>
+                <input type="text" class="campo" id="input-CEP">
+            </div>
+            <input type="submit" id="btn-confirmar-dados-entrega" class="btn-comprar" value="Confirmar">
+        </div>
+    </div>
+</div>
+
+<script src="/js/modal.js"></script>

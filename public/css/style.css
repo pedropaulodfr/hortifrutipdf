@@ -1,0 +1,208 @@
+@keyframes tremer {
+    0%, 20%, 60%, 100% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    40% {
+        -webkit-transform:rotate(-5deg);
+        transform: rotate(-5deg);     
+    }
+    80% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg);     
+    }
+}
+body{
+    overflow-x: hidden;
+}
+#main-intro{
+    position: relative; 
+    width:100vw;
+    height: 45.9vh;
+    background: url('https://pbs.twimg.com/media/FHSp0caWQAIgkJy?format=jpg&name=large');
+    background-position: 0px -550px;
+    background-repeat: repeat-x;
+    box-shadow: 0px 15px 12px 0px rgba(0,0,0,0.1);
+    margin-bottom: clamp(.1vh, .3vh, .8vh);
+}
+#title{
+    position: absolute;
+    top: 14vh;
+    left: 16vw;
+    font-size: max(40px, 7vw);
+    color: white;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+#title:hover{
+    font-size: clamp(7vw, 8vw, 8vw);
+}
+.post-info{
+    position: absolute;
+    top: 4.5vw;
+    left: 67vw;
+    width: 23.5vw;
+    height: 29vh;
+    text-align: center;
+    border-radius: 3.8vw;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(3px);
+    box-shadow: 0px 1px 30px 1px rgb(0, 0, 0);
+    cursor: pointer;
+    transition: all .2s;
+}
+.post-info:hover{
+    animation: tremer .3s reverse;
+}
+#oferta-txt{
+    color: white;
+    font-size: max(20px, 2vw)
+}
+.post-info img{
+    position: relative;
+    top: 3vh;
+    max-width: 18vw;
+    max-height: 18vh;
+    width: auto;
+    height: auto;
+}
+.ofertas-slide{
+    margin-bottom: clamp(.1vh, .3vh, .8vh);
+}
+#content{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: auto;
+    background: rgb(86,158,117);
+    background: linear-gradient(0deg, rgba(86,158,117,1) 0%, rgba(0,141,96,1) 100%);
+}
+#content a{
+    text-decoration: none;
+    color: #000;
+}
+.blocos{
+    position: relative;
+    top: 0px;
+    width: 28vw;
+    height: 53vh;
+    min-width: 300px;
+    min-height: 300px;
+    margin: 30px;
+    padding: 10px;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all .3s;
+}
+.blocos h1{
+    font-size: 40px;
+}
+.blocos img{
+    position: relative;
+    top: 3vh;
+    max-width: 38vw;
+    max-height: 38vh;
+    min-width: 150px;
+    min-height: 150px;
+}
+.blocos:hover{
+    transform: scale(1.05);
+}
+
+.nosso-espaco-container{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 43vh;
+    transition: all 1s;
+}
+.nosso-espaco-container img{
+    position: absolute;
+    left: 0vw;
+    width: 100vw;
+    height: 56vh;
+    max-width: 100%;
+    max-height: 100%;
+    filter: opacity(0.3);
+    transition: all 1s;
+}
+.nosso-espaco-container:hover img{
+    filter: opacity(1);
+    transform: scale(1.1);
+}
+.nosso-espaco-container:hover div{
+    opacity: 0;
+    transition:ease-in-out all 1s;
+}
+.nosso-espaco{
+    display: inline;
+}
+.nosso-espaco-titulo{
+    position: relative;
+    top: 2vh;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 15px;
+}
+.nosso-espaco-localizacao{
+    position: relative;
+    top: 22vh;
+    letter-spacing: .3vw;
+    display: inline;
+    text-align: center;
+    margin-left: 45%;
+}
+.nosso-espaco-localizacao i{
+    font-size: 50px;
+}
+.nosso-espaco-localizacao h2{
+    font-size: 30px;
+}
+
+footer{
+    position: relative;
+    text-align: center;
+    background-color: #111111;
+    padding: 30px;
+}
+footer h1{
+    font-family: sans-serif;
+    font-size: 40px;
+    color: white;
+    padding: 10px;
+}
+footer h2{
+    font-family: sans-serif;
+    font-size: 15px;
+    line-height: 30px;
+    letter-spacing: 2px;
+    color: white;
+    padding: 20px;
+}
+.redes-sociais-icons a{
+    position: relative;
+    top: 20px;
+    font-size: 50px;
+    text-decoration: none;
+    padding-left: 20px;
+    color: white;
+}
+
+@media(max-width: 800px){
+    .post-info{
+        height: 20vh;
+    }
+    .nosso-espaco-localizacao{
+        top: 15vh;
+        letter-spacing: .3vw;
+    }
+    .nosso-espaco-localizacao h2{
+        font-size: 20px;
+    }
+}

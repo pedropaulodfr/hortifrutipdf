@@ -1,0 +1,92 @@
+.entregas-content{
+    position: relative;
+    display: inline;
+}
+.title-entregas{
+    margin-left: 50px;
+    text-align: center;
+    color: #008D60;
+    margin-top: 30px;
+    font-size: 50px;
+}
+.seletores{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+.data{
+    display: flex;
+}
+.data h3{
+    font-size: 20px;
+}
+.data input{
+    height: 25px;
+    margin-left: 10px;
+    cursor: text;
+    border: solid 1px #000000;
+}
+.data input.erro{
+    border: solid 1px red;
+}
+.data button{
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    font-size: 18px;
+    vertical-align: middle;
+    padding: 0px;
+    color: #ffffff;
+    background-color: #008d60;
+    border: none;
+    border-radius: 5px;
+}
+.tabela{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+.dados-entrega td{
+    padding: 8px;
+    border: solid 1px #000000;
+    text-align: center;
+}
+#cabecalho{
+    text-align: center;
+    font-weight: bold;
+}
+.btn-excluir{
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.confirmar-exclusao-container{
+    background-color: #008D60;
+    border-radius: 10px;
+}
+.confirmar-exclusao-titulo h5{
+    color: #ffffff;
+    font-size: 12px;
+}
+.confirmar-exclusao-botoes i{
+    font-size: 20px;
+    background-color: #ffffff;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-sim{
+    color: #008D60;
+}
+.btn-nao{
+    color: red;
+}
+.ocultar {
+    opacity: 0;
+    display: none;
+}

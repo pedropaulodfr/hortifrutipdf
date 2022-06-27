@@ -1,0 +1,25 @@
+.botoes-navegacao{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #008D60;
+}
+.retroceder{
+    font-size: 50px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all .3s;
+}
+.deslogar{
+    font-size: 40px;
+    color: rgb(212, 212, 212);
+    cursor: pointer;
+    margin-right: 15px;
+    transition: all .3s;
+}
+.retroceder:hover{
+    margin-left: -5px;
+}
+.deslogar:hover{
+    color: #ffb1b1;
+}

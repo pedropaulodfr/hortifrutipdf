@@ -1,0 +1,25 @@
+{{>cabecalho}}
+{{>slide}}
+
+<section>
+    <div>
+        <form action="/" method="get" id="form-link">
+            <a href="javascript:document.getElementById('form-link').submit();">
+                <h1 class="secao-title" style="margin-left: 50px">Home</h1>
+                <h1 class="secao-title-divisao"> > </h1>
+            </a>
+                <h1 class="secao-title">Legumes</h1>
+        </form>
+    </div>
+    <div id="itens" class="itens"></div>
+</section>
+
+<script>
+    let dados = {{{dadosLegumes}}};
+    let nomeRota = {{{nomeRota}}};
+    nomeRota = String(nomeRota).replace("/", "");
+</script>
+
+<script src="js/construtorElementos.js"></script>
+
+{{>rodape}}
