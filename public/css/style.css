@@ -119,7 +119,7 @@ body{
     display: flex;
     justify-content: center;
     width: 100vw;
-    height: 43vh;
+    height: clamp(50vh, 55vh, 350px);
     transition: all 1s;
 }
 .nosso-espaco-container img{
@@ -200,6 +200,9 @@ footer h2{
     }
     .post-info{
         height: 20vh;
+    }
+    .nosso-espaco-container{
+        height: 35vh;
     }
     .nosso-espaco-localizacao{
         top: 15vh;
