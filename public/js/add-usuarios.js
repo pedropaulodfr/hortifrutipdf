@@ -24,7 +24,7 @@ function salvarDados(nome, cpf, nome_usuario, senha) {
     
     let form = document.createElement("form");
     
-    form.action = "/salvar-usuarios/"+ nome.value + "/" + cpf.value + "/" +  
+    form.action = "/insert/salvar-usuarios/"+ nome.value + "/" + cpf.value + "/" +  
     nome_usuario.value + "/" + senha.value;
     form.method = 'post';
     

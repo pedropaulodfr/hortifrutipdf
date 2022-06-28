@@ -34,7 +34,7 @@ function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nome
     
     let form = document.createElement("form");
     
-    form.action = "/salvar-produtos/"+ nome.value + "/" + categoria.value + "/" +  valor.value + "/" + 
+    form.action = "/insert/salvar-produtos/"+ nome.value + "/" + categoria.value + "/" +  valor.value + "/" + 
     unidade.value + "/" + quantidadeDisponivel.value + "/" + nomeImagem.value + "/" + token.value;
     form.method = 'post';
     

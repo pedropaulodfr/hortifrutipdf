@@ -3,7 +3,7 @@ function deletarProduto(id, categoria) {
     
     let form = document.createElement('form');
 
-    form.action = "/delete-produto/" + id + "/" + categoria;
+    form.action = "/delete/delete-produto/" + id + "/" + categoria;
     form.method = "post";
 
     tabela.appendChild(form);
@@ -18,7 +18,7 @@ function editarAtributo(atributo, id, categoria) {
     
     let form = document.createElement("form");
 
-    form.action = "/editar-produto/" + id + "/" + categoria + "/" + atributo + "/" + pegarNovoValor;
+    form.action = "/update/editar-produto/" + id + "/" + categoria + "/" + atributo + "/" + pegarNovoValor;
     form.method = "post";
 
     tabela.appendChild(form);

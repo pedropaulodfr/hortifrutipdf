@@ -87,7 +87,7 @@ function criarBotaoConfirmarExclusao(i, coluna, dadosEntregas) {
     divConfirm.appendChild(divText);
     divConfirm.appendChild(divBotoes);
 
-    formExcluir.action = "/delete-entrega/" + dadosEntregas[i].id + "/" + dadosEntregas[i].produto_id + "/" +
+    formExcluir.action = "/delete/delete-entrega/" + dadosEntregas[i].id + "/" + dadosEntregas[i].produto_id + "/" +
         dadosEntregas[i].categoria + "/" + dadosEntregas[i].quantidade;
     formExcluir.method = 'post';
     

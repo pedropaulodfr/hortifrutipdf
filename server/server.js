@@ -12,6 +12,7 @@ var client = new pg.Client({
         "ssl": {"require":true }
     }
 }); 
+
 module.exports = client
 
 // Conexão com o banco de dados local
