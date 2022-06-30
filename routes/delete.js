@@ -29,5 +29,13 @@ router.post('/delete-produto/:id/:rota', (req, res) =>{
     res.redirect(307, '/produtos')
 })
 
+router.post('/delete-usuario/:id', (req, res) => {
+    let id = req.params.id
+
+    client.query("DELETE FROM usuarios WHERE id = " + id)
+    
+    console.log("Usuário da id", id, "excluído");
+    res.redirect(307, '/listar-usuarios')
+})
 
 module.exports = router

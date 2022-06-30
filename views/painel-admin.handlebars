@@ -32,6 +32,15 @@
             </form>
             {{#each superUser}}
                 {{#if superuser}}
+                    <form action="/consultar/listar-usuarios" method="post" id="form-listar-funcionarios">
+                        <a href="javascript:document.getElementById('form-listar-funcionarios').submit();">
+                            <div class="box-categorias">
+                                <img src="/images/icons/listar-funcionarios.png" alt="" srcset="">
+                                <h5>Listar Funcionários</h5>
+                            </div>
+                        </a>
+                    </form>
+
                     <form action="/consultar/add-usuarios" method="post" id="form-add-funcionarios">
                         <a href="javascript:document.getElementById('form-add-funcionarios').submit();">
                             <div class="box-categorias">

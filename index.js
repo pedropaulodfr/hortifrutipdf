@@ -137,6 +137,10 @@ app.post('/consultar/:categoria', (req, res) =>{
             console.log('CATEGORIA -> ' + categoria)
             res.redirect(307, '/add-produtos')
             break
+        case 'listar-usuarios':
+            console.log('CATEGORIA ->' + categoria);
+            res.redirect(307, '/listar-usuarios')
+            break
         case 'add-usuarios':
             console.log('CATEGORIA -> ' + categoria)
             res.redirect(307, '/add-usuarios')
@@ -175,8 +179,17 @@ app.post('/add-produtos', (req, res) => {
     res.render("add-produtos")
 })
 
-app.post('/add-usuarios', (req, res) =>{
+app.post('/add-usuarios', (req, res) => {
     res.render('add-usuarios')
+})
+
+app.post('/listar-usuarios', (req, res) => {
+    client.query("SELECT * FROM usuarios").then(resultsUsuarios =>{
+        const resultadoUsuarios = resultsUsuarios.rows
+        res.render('listar-usuarios', {
+            dadosConsultaUsuarios: resultadoUsuarios
+        })
+    })
 })
 
 app.listen(porta, ()=>{
