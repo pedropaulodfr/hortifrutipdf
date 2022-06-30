@@ -171,25 +171,6 @@ app.post('/produtos', (req, res) =>{
     })
 })
 
-/*
-app.post('/editar-produto/:id/:rota/:atributo/:novoValor', (req, res) =>{
-    let id = req.params.id;
-    let rota = req.params.rota;
-    let atributo = req.params.atributo;
-    let novoValor = req.params.novoValor;
-
-    if (atributo == 'valor' || atributo == 'quantidade_disponivel') {
-        client.query("UPDATE " + rota + " SET " + atributo + " = '" + novoValor + "' WHERE id = " + id);
-        console.log("UPDATE " + rota + " SET " + atributo + " = " + novoValor + " WHERE id = " + id);
-    }else{
-        client.query("UPDATE " + rota + " SET " + atributo + " = '" + novoValor + "' WHERE id = " + id);
-        console.log("UPDATE " + rota + " SET " + atributo + " = '" + novoValor + "' WHERE id = " + id);
-    }
-    
-    res.redirect(307, '/produtos')
-})
-*/
-
 app.post('/add-produtos', (req, res) => {
     res.render("add-produtos")
 })

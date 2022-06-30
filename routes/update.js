@@ -9,7 +9,7 @@ const mes = data.getMonth() + 1
 const ano = data.getFullYear()
 const diaAtual = ano + '-' + mes + '-' + dia
 
-router.post('/update/editar-produto/:id/:rota/:atributo/:novoValor', (req, res) =>{
+router.post('/editar-produto/:id/:rota/:atributo/:novoValor', (req, res) =>{
     let id = req.params.id;
     let rota = req.params.rota;
     let atributo = req.params.atributo;
