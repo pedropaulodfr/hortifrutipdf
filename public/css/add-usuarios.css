@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
 }
-.campos input{
+.campos input, select{
     margin-left: 30px;
 }
 .botao-confirmar{

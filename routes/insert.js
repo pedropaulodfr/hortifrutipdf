@@ -53,14 +53,17 @@ router.post('/salvar-produtos/:nome/:categoria/:valor/:unidade/:quantDisp/:nomeI
 
 })
 
-router.post('/salvar-usuarios/:nome/:cpf/:username/:senha', (req, res) =>{
+router.post('/salvar-usuarios/:nome/:cpf/:username/:senha/:superUser', (req, res) =>{
     let nome = req.params.nome
     let cpf = req.params.cpf
     let username = req.params.username
     let senha = req.params.senha
+    let superUser = req.params.superUser
 
-    let sql = "INSERT INTO usuarios (nome, cpf, nome_usuario, senha) VALUES ($1, $2, $3, $4)"
-    let values = [nome, cpf, username, senha]
+    console.log(typeof superUser);
+
+    let sql = "INSERT INTO usuarios (nome, cpf, nome_usuario, senha, superuser) VALUES ($1, $2, $3, $4, $5)"
+    let values = [nome, cpf, username, senha, superUser]
 
     client.query(sql, values)
 

@@ -4,6 +4,7 @@ function verificarCamposDadosUsuarios() {
     let campoCPF = document.querySelector("#campo-cpf");
     let campoNomeUsuario = document.querySelector("#campo-nome-usuario");
     let campoSenha = document.querySelector("#campo-senha");
+    let campoSuperUser = document.querySelector("#superUser");
 
     if (campoNome.value == ''){
         campoNome.classList.add('erro');
@@ -14,18 +15,18 @@ function verificarCamposDadosUsuarios() {
     }else if (campoSenha.value == ''){
         campoSenha.classList.add('erro');
     }else{
-        salvarDados(campoNome, campoCPF, campoNomeUsuario, campoSenha);
+        salvarDados(campoNome, campoCPF, campoNomeUsuario, campoSenha, campoSuperUser);
     }
 }
 
-function salvarDados(nome, cpf, nome_usuario, senha) {
+function salvarDados(nome, cpf, nome_usuario, senha, superUser) {
     let divContainer = document.getElementById("modal-dados-usuarios-container");
     console.log(divContainer);
     
     let form = document.createElement("form");
     
     form.action = "/insert/salvar-usuarios/"+ nome.value + "/" + cpf.value + "/" +  
-    nome_usuario.value + "/" + senha.value;
+    nome_usuario.value + "/" + senha.value + "/" + superUser.value;
     form.method = 'post';
     
     divContainer.appendChild(form);
