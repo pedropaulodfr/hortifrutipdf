@@ -4,7 +4,6 @@ const handlebars = require("express-handlebars")
 const bodyParser = require("body-parser")
 require("module-alias/register")
 
-
 const porta = process.env.PORT || 8181
 
 // Config. handlebars
