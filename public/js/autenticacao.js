@@ -1,9 +1,24 @@
 let btnConfirmarAutenticacao = document.getElementById('btn-confirmar-autenticacao');
+let campoUsuario = document.getElementById('usuario');
+let campoSenha = document.getElementById('senha');
+
 btnConfirmarAutenticacao.addEventListener("click", ()=>{
     verificarCamposAutenticacao();
 })
 
-document.getElementById('usuario').focus();
+campoUsuario.addEventListener("keypress", (e) =>{
+    if (e.key == 'Enter') {
+        verificarCamposAutenticacao();
+    }
+})
+
+campoSenha.addEventListener("keypress", (e) =>{
+    if (e.key == 'Enter') {
+        verificarCamposAutenticacao();
+    }
+})
+
+campoUsuario.focus();
 
 function verificarCamposAutenticacao(){
     let usuario = document.getElementById('usuario');

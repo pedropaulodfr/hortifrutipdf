@@ -1,0 +1,41 @@
+{{>cabecalho}}
+{{>botoes-navegacao}}
+
+<link rel="stylesheet" href="/css/meu-perfil.css">
+
+<div class="meu-perfil-content">
+    <div class="meu-perfil-cabecalho">
+        <div class="meu-perfil-titulo">
+            <h1>Meu perfil</h1>
+        </div>
+    </div>
+    <div class="tabela">
+        <div class="secao-tabela">
+            <table class="tabela-meu-perfil" id="tabela-meu-perfil" border="1">
+                <tr class="cabecalho-tabela">
+                    <td>Id</td>
+                    <td>Nome</td>
+                    <td>CPF</td>
+                    <td>Nome de Usuário</td>
+                    <td>Senha</td>
+                </tr>
+                {{#each dadosConsultaUsuario}}
+                    <tr>
+                        <td>{{this.id}}</td>
+                        <td id="coluna-nome-{{this.id}}">{{this.nome}}</td>
+                        <td id="coluna-cpf-{{this.id}}">{{this.cpf}}</td>
+                        <td id="coluna-nome-usuario-{{this.id}}">{{this.nome_usuario}}</td>
+                        <td id="coluna-senha-{{this.id}}">{{this.senha}}</td>
+                        <td id="coluna-meu-perfil-{{this.id}}">
+                            <i class="bx bx-edit btn-editar" id="btn-editar" onclick="criarElementosEditarAtributo({{this.id}})"></i>
+                        </td>
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/js/meu-perfil.js"></script>
+
+{{>rodape}}

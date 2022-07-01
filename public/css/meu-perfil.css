@@ -1,0 +1,87 @@
+.meu-perfil-content{
+    position: relative;
+    display: inline;
+    width: 100vw;
+}
+.meu-perfil-cabecalho{
+    display: inline;
+    font-size: 30px;
+    color: #008D60;
+    text-align: center;
+}
+.meu-perfil-titulo{
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.secao-tabela{
+    display: inline;
+}
+.tabela{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.cabecalho-tabela{
+    font-weight: bold;
+}
+.tabela-meu-perfil td{
+    padding: 8px;
+    border: solid 1px #000000;
+    text-align: center;
+}
+.btn-editar{
+    color: #000000;
+    font-size: 22px;
+    cursor: pointer;
+}
+.editar-atributo-container{
+    background-color: #008D60;
+    border-radius: 10px;
+    max-width: 150px;
+}
+.editar-atributo-titulo, h5{
+    color: #ffffff;
+    font-size: 12px;
+}
+.editar-atributo-botoes button{
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: none;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    transition: all .3s;
+}
+.editar-atributo-botoes button:hover{
+    transform: scale(1.1);
+}
+#btn-cancelar{
+    color: #ffffff;
+    background-color: rgb(255, 93, 93);
+}
+.novo-valor-container{
+    display: flex;
+}
+.btn-submit-novo-valor {
+    width: 30px;
+    height: 30px;
+    margin-top: 2px;
+    margin-left: 5px;
+    font-size: 20px;
+    vertical-align: middle;
+    padding: 0px;
+    color: #ffffff;
+    background-color: #008d60;
+    border: none;
+    border-radius: 5px;
+}
+.ocultar {
+    opacity: 0;
+    display: none;
+}
+.mostrar {
+    opacity: 1;
+    display: block;
+}

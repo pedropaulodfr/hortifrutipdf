@@ -42,4 +42,19 @@ router.post('/editar-usuario/:id/:atributo/:novoValor', (req, res) => {
     res.redirect(307, '/listar-usuarios')
 })
 
+router.post('/editar-meu-perfil/:id/:atributo/:novoValor', (req, res) => {
+    let id = req.params.id
+    let atributo = req.params.atributo
+    let novoValor = req.params.novoValor
+
+    if (atributo == "nome-usuario") {
+        atributo = "nome_usuario"
+    }
+
+    client.query("UPDATE usuarios SET " + atributo + " = '" + novoValor + "' WHERE id = " + id)
+    console.log("Atributo " + atributo + " do id " + id + " alterado com sucesso para " + novoValor)
+
+    res.redirect(307, '/meu-perfil/' + id)
+})
+
 module.exports = router

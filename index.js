@@ -92,14 +92,16 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
         try {
             var usuarioBD = resultado[indexUsuario].nome_usuario
             var senhaBD = resultado[indexUsuario].senha
+            var idBD = resultado[indexUsuario].id
+
+            console.log(idBD, usuarioBD, senhaBD);
         } catch (error) {
-            console.log(error);
-            res.redirect('/admin')
+            res.redirect(307, '/admin')
         }
         
         if (usuario == usuarioBD && senha == senhaBD) {
             console.log('Usuário ' + usuarioBD + ' autenticado')
-            res.redirect(307, '/painel-admin/' + usuarioBD)
+            res.redirect(307, '/painel-admin/' + idBD + '/'  + usuarioBD)
         } else {
             console.log('Falha de autenticação')
             res.redirect('/admin')
@@ -108,22 +110,30 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
     })
 })
 
-app.post('/painel-admin/:usuario', (req, res) =>{
-    client.query("SELECT superuser FROM usuarios WHERE nome_usuario = '" + req.params.usuario + "'").then(results =>{
+app.post('/painel-admin/:id/:usuario', (req, res) =>{
+    let usuario  = req.params.usuario
+
+    client.query("SELECT superuser, id FROM usuarios WHERE nome_usuario = '" + usuario + "'").then(results =>{
         const resultado = results.rows
+
+        console.log(resultado[0]);
 
         if (resultado[0].superuser == 1) {
             res.render('painel-admin', {
-                superUser: resultado
+                superUser: resultado,
+                dadosID: resultado
             })
         } else {
-            res.render('painel-admin')
+            res.render('painel-admin', {
+                dadosID: resultado
+            })
         }
     })
 })
 
-app.post('/consultar/:categoria', (req, res) =>{
+app.post('/consultar/:categoria/:id', (req, res) =>{
     let categoria = req.params.categoria
+    let id = req.params.id
 
     switch (categoria) {
         case 'entregas':
@@ -144,6 +154,10 @@ app.post('/consultar/:categoria', (req, res) =>{
         case 'add-usuarios':
             console.log('CATEGORIA -> ' + categoria)
             res.redirect(307, '/add-usuarios')
+            break
+        case 'meu-perfil':
+            console.log('CATEGORIA -> ' + categoria)
+            res.redirect(307, '/meu-perfil/' + id)
             break
     }
 })
@@ -188,6 +202,17 @@ app.post('/listar-usuarios', (req, res) => {
         const resultadoUsuarios = resultsUsuarios.rows
         res.render('listar-usuarios', {
             dadosConsultaUsuarios: resultadoUsuarios
+        })
+    })
+})
+
+app.post('/meu-perfil/:id', (req, res) => {
+    let id = req.params.id
+    console.log("Meu perfil ->", id);
+    client.query("SELECT * FROM usuarios WHERE id = " + id).then(resultsUsuario =>{
+        const resultadoUsuario = resultsUsuario.rows
+        res.render('meu-perfil', {
+            dadosConsultaUsuario: resultadoUsuario
         })
     })
 })
