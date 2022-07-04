@@ -1,3 +1,4 @@
+var urlImagem
 function verificarCamposDadosProdutos(file) {
     console.log('Verificar Campos');
     let campoNome = document.querySelector("#campo-nome");
@@ -30,26 +31,30 @@ function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nome
 
 
     const storage = firebase.storage();
-    const upload = storage.ref().child("frutas").child(file.name).put(file)
+    const upload = storage.ref().child(categoria.value).child(file.name).put(file)
 
     upload.on("state_changed", () =>{
-        upload.snapshot.ref.getDownloadURL().then( (urlImagem) =>{        
-            console.log("URL: " + urlImagem);
+        upload.snapshot.ref.getDownloadURL().then((GET_URL_IMAGEM) =>{        
+            console.log("GET_URL_IMAGEM = ", GET_URL_IMAGEM);
+            urlImagem = GET_URL_IMAGEM;
         })
     })
     
+    
+    setTimeout(() =>{
+        let form = document.createElement("form");
+        
+        form.action = "/insert/salvar-produtos/"+ nome.value + "/" + categoria.value + "/" +  valor.value + "/" + 
+        unidade.value + "/" + quantidadeDisponivel.value + "/" + 'nomeImagem' + "/" + 'token' + "/" + urlImagem.replaceAll("/", "$kc=193$");
+        form.method = 'post';
+        
+        divContainer.appendChild(form);
+        
+        form.submit()
 
-    let form = document.createElement("form");
-    
-    form.action = "/insert/salvar-produtos/"+ nome.value + "/" + categoria.value + "/" +  valor.value + "/" + 
-    unidade.value + "/" + quantidadeDisponivel.value + "/" + nomeImagem.value + "/" + token.value;
-    form.method = 'post';
-    
-    divContainer.appendChild(form);
-    
-    notificacaoDadosInseridos(nome, categoria);
-    
-    //form.submit();
+        notificacaoDadosInseridos(nome, categoria)
+    }, 2000)
+
 }
 
 function notificacaoDadosInseridos(nome, categoria) {

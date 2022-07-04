@@ -6,6 +6,7 @@ for (let i = 0; i < dados.length; i++){
     let quantidadeDisponivel = dados[i].quantidade_disponivel;
     let token = dados[i].token;
     let unidade = dados[i].unidade;
+    let 
 
     if(quantidadeDisponivel > 0){
         criarElementos(id, nome, nomeImagem, valor, quantidadeDisponivel, token, unidade)
