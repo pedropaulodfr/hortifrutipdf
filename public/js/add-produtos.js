@@ -1,4 +1,4 @@
-function verificarCamposDadosProdutos() {
+function verificarCamposDadosProdutos(file) {
     console.log('Verificar Campos');
     let campoNome = document.querySelector("#campo-nome");
     let campoCategoria = document.querySelector("#campo-categoria");
@@ -18,20 +18,27 @@ function verificarCamposDadosProdutos() {
         campoUnidade.classList.add('erro');
     }else if (campoQuantidadeDisponivel.value == ''){
         campoQuantidadeDisponivel.classList.add('erro');
-    }else if (campoNomeImagem.value == ''){
-        campoNomeImagem.classList.add('erro');
-    }else if (campoToken.value == ''){
-        campoToken.classList.add('erro');
     }else{
         salvarDados(campoNome, campoCategoria, campoValor, campoUnidade, campoQuantidadeDisponivel, 
-            campoNomeImagem, campoToken);
+            'campoNomeImagem', 'campoToken', file);
     }
 }
     
-function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nomeImagem, token) {
+function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nomeImagem, token, file) {
     let divContainer = document.getElementById("modal-dados-produto-container");
     console.log(divContainer);
+
+
+    const storage = firebase.storage();
+    const upload = storage.ref().child("frutas").child(file.name).put(file)
+
+    upload.on("state_changed", () =>{
+        upload.snapshot.ref.getDownloadURL().then( (urlImagem) =>{        
+            console.log("URL: " + urlImagem);
+        })
+    })
     
+
     let form = document.createElement("form");
     
     form.action = "/insert/salvar-produtos/"+ nome.value + "/" + categoria.value + "/" +  valor.value + "/" + 
@@ -42,7 +49,7 @@ function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nome
     
     notificacaoDadosInseridos(nome, categoria);
     
-    form.submit();
+    //form.submit();
 }
 
 function notificacaoDadosInseridos(nome, categoria) {
@@ -71,3 +78,12 @@ function notificacaoDadosInseridos(nome, categoria) {
     divDadosInseridos.appendChild(form);
     document.getElementById("modal-dados-produto").appendChild(divDadosInseridos)
 }
+
+let input = document.querySelector("input[type=file]");
+input.addEventListener("change", (e)=>{
+    var file = e.target.files[0]; 
+    console.log(file);
+    document.getElementById('btn-add-produto').addEventListener("click", () =>{
+        verificarCamposDadosProdutos(file)
+    })
+})

@@ -40,16 +40,14 @@
                     <input type="number" id="campo-quantidade-disponivel">
                 </div>
                 <div class="input-campo">
-                    <h3>Nome da imagem</h3>
-                    <input type="text" id="campo-nome-imagem" style="margin-left: 78px;">
-                </div>
-                <div class="input-campo">
-                    <h3>Token</h3>
-                    <input type="text" id="campo-token" style="width: 250px;">
+                    <h3>Imagem</h3>
+                    <form method="post">
+                        <input type="file" name="arquivo" accept=".png, .jpg, .jpeg">
+                    </form>
                 </div>
             </div>
             <div id="btn-confirmar-dados-produto">
-                <input type="submit" id="" class="btn-comprar" value="Confirmar" onclick="verificarCamposDadosProdutos()">
+                <input type="submit" id="btn-add-produto" class="btn-comprar" value="Confirmar" onclick="">
             </div>
         </div>
     </div>
