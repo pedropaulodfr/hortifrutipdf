@@ -85,6 +85,9 @@
 .novo-valor-container{
     display: flex;
 }
+.novo-valor-campo{
+    width: 100%;
+}
 .btn-submit-novo-valor {
     width: 30px;
     height: 30px;

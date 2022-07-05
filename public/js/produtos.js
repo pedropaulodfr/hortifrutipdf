@@ -18,7 +18,13 @@ function editarAtributo(atributo, id, categoria) {
     
     let form = document.createElement("form");
 
-    form.action = "/update/editar-produto/" + id + "/" + categoria + "/" + atributo + "/" + pegarNovoValor;
+    if (atributo == "link_imagem") {
+        form.action = "/update/editar-produto/" + id + "/" + categoria + "/" + atributo + "/" +
+                        pegarNovoValor.replaceAll("/", "kc=191").replaceAll("?", "kc=193").replaceAll("%2F", "kc=535070");
+    }else{
+        form.action = "/update/editar-produto/" + id + "/" + categoria + "/" + atributo + "/" + pegarNovoValor;
+    }
+
     form.method = "post";
 
     tabela.appendChild(form);
@@ -65,11 +71,10 @@ function criarElementosEditarAtributo(id, categoria) {
     let divEditarAtributoBotoes = document.createElement("div");
     let h5Titulo = document.createElement("h5");
     let btnNome = document.createElement("button");
-    let btnImagem = document.createElement("button");
     let btnValor = document.createElement("button");
     let btnUnidade = document.createElement("button");
     let btnQuantDisp = document.createElement("button");
-    let btnToken = document.createElement("button");
+    let btnLinkImagem = document.createElement("button");
     let btnCancelar = document.createElement("button");
 
     h5Titulo.innerText = "Editar";
@@ -78,12 +83,11 @@ function criarElementosEditarAtributo(id, categoria) {
     divEditarAtributoTitulo.appendChild(h5Titulo);
 
     btnNome.innerText = "Nome";
-    btnImagem.innerText = "Imagem";
     btnValor.innerText = "Valor";
     btnUnidade.innerText = "Unidade";
     btnQuantDisp.innerText = "Quantidade disponível";
-    btnToken.innerText = "Token";
     btnCancelar.innerText = "Cancelar";
+    btnLinkImagem.innerText = "Link Imagem";
     btnCancelar.id = "btn-cancelar";
 
     function criarCampoInserirNovoValor(atributo, id) {
@@ -117,9 +121,6 @@ function criarElementosEditarAtributo(id, categoria) {
     btnNome.addEventListener("click", () => {
         criarCampoInserirNovoValor("nome", id);
     });
-    btnImagem.addEventListener("click", () => {
-        criarCampoInserirNovoValor("nome_imagem", id);
-    });
     btnValor.addEventListener("click", () => {
         criarCampoInserirNovoValor("valor", id);
     });
@@ -129,17 +130,17 @@ function criarElementosEditarAtributo(id, categoria) {
     btnQuantDisp.addEventListener("click", () => {
         criarCampoInserirNovoValor("quantidade_disponivel", id);
     });
-    btnToken.addEventListener("click", () => {
-        criarCampoInserirNovoValor("token", id)
+    btnLinkImagem.addEventListener("click", () => {
+        criarCampoInserirNovoValor("link_imagem", id);
     });
+
 
     divEditarAtributoBotoes.className = "editar-atributo-botoes";
     divEditarAtributoBotoes.appendChild(btnNome);
-    divEditarAtributoBotoes.appendChild(btnImagem);
     divEditarAtributoBotoes.appendChild(btnValor);
     divEditarAtributoBotoes.appendChild(btnUnidade);
     divEditarAtributoBotoes.appendChild(btnQuantDisp);
-    divEditarAtributoBotoes.appendChild(btnToken);
+    divEditarAtributoBotoes.appendChild(btnLinkImagem);
     divEditarAtributoBotoes.appendChild(btnCancelar);
 
     divEditarAtributoContent.className = "editar-atributo-container";
