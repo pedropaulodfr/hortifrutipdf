@@ -1,7 +1,3 @@
-let URL_BASE = "https://firebasestorage.googleapis.com/v0/b/hortifruti-75cfd.appspot.com/o/" + 
-String(parametros.nomeRota) + "%2F" + String(parametros.nomeImagem) + ".png?alt=media&token=" + 
-String(parametros.token);
-
 let divInfoProduto = document.getElementById("info-produto");
 let divImg = document.getElementById("img-produto");
 let campoValorTotal = document.getElementById("campo-valor-total");
@@ -15,7 +11,7 @@ let divValor = document.createElement("div");
 let divConfirmarQuantidade = document.createElement("div");
 let inputQuantidade = document.createElement("input");
 
-img.src = URL_BASE;
+img.src = parametros.linkImagem.replace(/kc=191/g, '/').replace(/kc=193/g, '?').replace(/kc=535070/g, '%2F');
 h1.innerText = parametros.nome;
 h2.innerText = "R$ " + String(parametros.valor).replace(".", ",") + " / " + parametros.unidade;
 

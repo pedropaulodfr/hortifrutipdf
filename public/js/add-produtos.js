@@ -20,12 +20,11 @@ function verificarCamposDadosProdutos(file) {
     }else if (campoQuantidadeDisponivel.value == ''){
         campoQuantidadeDisponivel.classList.add('erro');
     }else{
-        salvarDados(campoNome, campoCategoria, campoValor, campoUnidade, campoQuantidadeDisponivel, 
-            'campoNomeImagem', 'campoToken', file);
+        salvarDados(campoNome, campoCategoria, campoValor, campoUnidade, campoQuantidadeDisponivel, file);
     }
 }
     
-function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nomeImagem, token, file) {
+function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, file) {
     let divContainer = document.getElementById("modal-dados-produto-container");
     console.log(divContainer);
 
@@ -44,7 +43,7 @@ function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nome
     setTimeout(() =>{
         let form = document.createElement("form");
         form.action = "/insert/salvar-produtos/"+ nome.value + "/" + categoria.value + "/" +  valor.value + "/" + 
-        unidade.value + "/" + quantidadeDisponivel.value + "/" + 'nomeImagem' + "/" + 'token' + "/" + urlImagem.replaceAll("/", "kc=191").replaceAll("?", "kc=193").replaceAll("%2F", "kc=535070");
+        unidade.value + "/" + quantidadeDisponivel.value + "/" + urlImagem.replaceAll("/", "kc=191").replaceAll("?", "kc=193").replaceAll("%2F", "kc=535070");
         form.method = 'post';
 
         divContainer.appendChild(form);

@@ -34,21 +34,19 @@ router.post('/confirmarCompra/:nomeRota/:id/:produto/:quantidade/:valorTotal/:no
 
 })
 
-router.post('/salvar-produtos/:nome/:categoria/:valor/:unidade/:quantDisp/:nomeImagem/:token/:urlImagem', (req, res) => {
+router.post('/salvar-produtos/:nome/:categoria/:valor/:unidade/:quantDisp/:urlImagem', (req, res) => {
     let nome = req.params.nome
     let categoria = req.params.categoria
     let valor = req.params.valor
     let unidade = req.params.unidade
     let quantDisp = req.params.quantDisp
-    let nomeImagem = req.params.nomeImagem
-    let token = req.params.token
     let urlImagem = req.params.urlImagem
 
     console.log(urlImagem.replace(/kc=191/g, '/').replace(/kc=193/g, '?').replace(/kc=535070/g, '%2F'));
 
-    let sql = "INSERT INTO " + categoria + " (nome, nome_imagem, valor, token, unidade, quantidade_disponivel, link_imagem)" + 
-    " VALUES ($1, $2, $3, $4, $5, $6, $7)"
-    let values = [nome, 'nomeImagem', valor, 'token', unidade, quantDisp, urlImagem.replace(/kc=191/g, '/').replace(/kc=193/g, '?').replace(/kc=535070/g, '%2F')]
+    let sql = "INSERT INTO " + categoria + " (nome, valor, unidade, quantidade_disponivel, link_imagem)" + 
+    " VALUES ($1, $2, $3, $4, $5)"
+    let values = [nome, valor, unidade, quantDisp, urlImagem.replace(/kc=191/g, '/').replace(/kc=193/g, '?').replace(/kc=535070/g, '%2F')]
 
     client.query(sql, values)
 

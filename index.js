@@ -69,7 +69,7 @@ app.post('/legumes', (req, res) =>{
     })
 })
 
-app.post('/comprar/:id/:nome/:valor/:unidade/:quantidadeDisponivel/:nomeImagem/:token/:nomeRota', (req, res) =>{
+app.post('/comprar/:id/:nome/:valor/:unidade/:quantidadeDisponivel/:nomeRota/:linkImagem', (req, res) =>{
     res.render('comprar', {
         parametros: JSON.stringify(req.params)
     })
