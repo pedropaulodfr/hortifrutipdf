@@ -43,11 +43,10 @@ function salvarDados(nome, categoria, valor, unidade, quantidadeDisponivel, nome
     
     setTimeout(() =>{
         let form = document.createElement("form");
-        
         form.action = "/insert/salvar-produtos/"+ nome.value + "/" + categoria.value + "/" +  valor.value + "/" + 
-        unidade.value + "/" + quantidadeDisponivel.value + "/" + 'nomeImagem' + "/" + 'token' + "/" + urlImagem.replaceAll("/", "$kc=193$");
+        unidade.value + "/" + quantidadeDisponivel.value + "/" + 'nomeImagem' + "/" + 'token' + "/" + urlImagem.replaceAll("/", "kc=191").replaceAll("?", "kc=193").replaceAll("%2F", "kc=535070");
         form.method = 'post';
-        
+
         divContainer.appendChild(form);
         
         form.submit()

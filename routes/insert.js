@@ -44,13 +44,15 @@ router.post('/salvar-produtos/:nome/:categoria/:valor/:unidade/:quantDisp/:nomeI
     let token = req.params.token
     let urlImagem = req.params.urlImagem
 
+    console.log(urlImagem.replace(/kc=191/g, '/').replace(/kc=193/g, '?').replace(/kc=535070/g, '%2F'));
+
     let sql = "INSERT INTO " + categoria + " (nome, nome_imagem, valor, token, unidade, quantidade_disponivel, link_imagem)" + 
     " VALUES ($1, $2, $3, $4, $5, $6, $7)"
-    let values = [nome, 'nomeImagem', valor, 'token', unidade, quantDisp, urlImagem.replaceAll("$kc=193$", "/")]
+    let values = [nome, 'nomeImagem', valor, 'token', unidade, quantDisp, urlImagem.replace(/kc=191/g, '/').replace(/kc=193/g, '?').replace(/kc=535070/g, '%2F')]
 
     client.query(sql, values)
 
-    console.log("Produto '" + nome + "' inserido com sucesso em " + categoria);
+    console.log("Produto '" + nome + "' inserido com sucesso em " + categoria)
 
 })
 
