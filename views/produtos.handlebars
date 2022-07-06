@@ -28,7 +28,10 @@
                     {{#each dadosConsultaFrutas}}
                         <tr>
                             <td>{{this.id}}</td>
-                            <td id="coluna-frutas-nome-{{this.id}}" class="coluna-frutas-nome-{{this.id}}">{{this.nome}}</td>
+                            <td id="coluna-frutas-nome-{{this.id}}" class="coluna-frutas-nome-{{this.id}}" style="text-align: left;">
+                                <img class="imagem-produto" src="{{this.link_imagem}}">
+                                {{this.nome}}
+                            </td>
                             <td id="coluna-frutas-valor-{{this.id}}">{{this.valor}}</td>
                             <td id="coluna-frutas-unidade-{{this.id}}">{{this.unidade}}</td>
                             <td id="coluna-frutas-quantidade_disponivel-{{this.id}}">{{this.quantidade_disponivel}}</td>
@@ -59,7 +62,10 @@
                     {{#each dadosConsultaVerduras}}
                         <tr>
                             <td>{{this.id}}</td>
-                            <td id="coluna-verduras-nome-{{this.id}}" class="coluna-verduras-nome-{{this.id}}">{{this.nome}}</td>
+                            <td id="coluna-verduras-nome-{{this.id}}" class="coluna-verduras-nome-{{this.id}}" style="text-align: left;">
+                                <img class="imagem-produto" src="{{this.link_imagem}}">
+                                {{this.nome}}
+                            </td>
                             <td id="coluna-verduras-valor-{{this.id}}">{{this.valor}}</td>
                             <td id="coluna-verduras-unidade-{{this.id}}">{{this.unidade}}</td>
                             <td id="coluna-verduras-quantidade_disponivel-{{this.id}}">{{this.quantidade_disponivel}}</td>
@@ -90,7 +96,10 @@
                     {{#each dadosConsultaLegumes}}
                         <tr>
                             <td>{{this.id}}</td>
-                            <td id="coluna-legumes-nome-{{this.id}}" class="coluna-legumes-nome-{{this.id}}">{{this.nome}}</td>
+                            <td id="coluna-legumes-nome-{{this.id}}" class="coluna-legumes-nome-{{this.id}}" style="text-align: left;">
+                                <img class="imagem-produto" src="{{this.link_imagem}}">
+                                {{this.nome}}
+                            </td>
                             <td id="coluna-legumes-valor-{{this.id}}">{{this.valor}}</td>
                             <td id="coluna-legumes-unidade-{{this.id}}">{{this.unidade}}</td>
                             <td id="coluna-legumes-quantidade_disponivel-{{this.id}}">{{this.quantidade_disponivel}}</td>
