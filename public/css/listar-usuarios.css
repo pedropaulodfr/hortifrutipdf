@@ -32,6 +32,14 @@
     border: solid 1px #000000;
     text-align: center;
 }
+.foto-perfil{
+    max-width: 30px;
+    max-height: 30px;
+    width: auto;
+    height: auto;
+    border: solid 2px #ffffff;
+    border-radius: 50%;
+}
 .btn-editar{
     color: #000000;
     font-size: 22px;

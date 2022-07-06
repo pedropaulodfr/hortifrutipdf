@@ -23,7 +23,10 @@
                 {{#each dadosConsultaUsuarios}}
                     <tr>
                         <td>{{this.id}}</td>
-                        <td id="coluna-nome-{{this.id}}">{{this.nome}}</td>
+                        <td id="coluna-nome-{{this.id}}" style="text-align: left;">
+                            <img class="foto-perfil" src="{{this.imagem_perfil}}">
+                            {{this.nome}}
+                        </td>
                         <td id="coluna-cpf-{{this.id}}">{{this.cpf}}</td>
                         <td id="coluna-nome-usuario-{{this.id}}">{{this.nome_usuario}}</td>
                         <td id="coluna-senha-{{this.id}}">{{this.senha}}</td>
