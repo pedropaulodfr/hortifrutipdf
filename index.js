@@ -112,7 +112,7 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
 app.post('/painel-admin/:id/:usuario', (req, res) =>{
     let usuario  = req.params.usuario
 
-    client.query("SELECT superuser, id FROM usuarios WHERE nome_usuario = '" + usuario + "'").then(results =>{
+    client.query("SELECT superuser, id, imagem_perfil FROM usuarios WHERE nome_usuario = '" + usuario + "'").then(results =>{
         const resultado = results.rows
 
         console.log(resultado[0]);
@@ -120,11 +120,13 @@ app.post('/painel-admin/:id/:usuario', (req, res) =>{
         if (resultado[0].superuser == 1) {
             res.render('painel-admin', {
                 superUser: resultado,
-                dadosID: resultado
+                dadosID: resultado,
+                dadosImagemPerfil: JSON.stringify(resultado[0].imagem_perfil)
             })
         } else {
             res.render('painel-admin', {
-                dadosID: resultado
+                dadosID: resultado,
+                dadosImagemPerfil: JSON.stringify(resultado[0].imagem_perfil)
             })
         }
     })

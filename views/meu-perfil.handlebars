@@ -4,36 +4,42 @@
 <link rel="stylesheet" href="/css/meu-perfil.css">
 
 <div class="meu-perfil-content">
-    <div class="meu-perfil-cabecalho">
-        <div class="meu-perfil-titulo">
-            <h1>Meu perfil</h1>
+    {{#each dadosConsultaUsuario}}
+        <div class="meu-perfil-cabecalho">
+            <div class="meu-perfil-titulo">
+                <h1>Meu perfil</h1>
+            </div>
         </div>
-    </div>
-    <div class="tabela">
-        <div class="secao-tabela">
-            <table class="tabela-meu-perfil" id="tabela-meu-perfil" border="1">
-                <tr class="cabecalho-tabela">
-                    <td>Id</td>
-                    <td>Nome</td>
-                    <td>CPF</td>
-                    <td>Nome de Usuário</td>
-                    <td>Senha</td>
-                </tr>
-                {{#each dadosConsultaUsuario}}
-                    <tr>
-                        <td>{{this.id}}</td>
-                        <td id="coluna-nome-{{this.id}}">{{this.nome}}</td>
-                        <td id="coluna-cpf-{{this.id}}">{{this.cpf}}</td>
-                        <td id="coluna-nome-usuario-{{this.id}}">{{this.nome_usuario}}</td>
-                        <td id="coluna-senha-{{this.id}}">{{this.senha}}</td>
-                        <td id="coluna-meu-perfil-{{this.id}}">
-                            <i class="bx bx-edit btn-editar" id="btn-editar" onclick="criarElementosEditarAtributo({{this.id}})"></i>
-                        </td>
+        <div class="foto-perfil-content">
+            <div id="foto-perfil" class="shadow" onclick="alterarFotoPerfil({{this.id}})">
+                <h1>Alterar</h1>
+            </div>
+            <img  id="" class="foto-perfil" src={{this.imagem_perfil}}>
+        </div>
+        <div class="tabela">
+            <div class="secao-tabela">
+                <table class="tabela-meu-perfil" id="tabela-meu-perfil" border="1">
+                    <tr class="cabecalho-tabela">
+                        <td>Id</td>
+                        <td>Nome</td>
+                        <td>CPF</td>
+                        <td>Nome de Usuário</td>
+                        <td>Senha</td>
                     </tr>
-                {{/each}}
-            </table>
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td id="coluna-nome-{{this.id}}">{{this.nome}}</td>
+                            <td id="coluna-cpf-{{this.id}}">{{this.cpf}}</td>
+                            <td id="coluna-nome-usuario-{{this.id}}">{{this.nome_usuario}}</td>
+                            <td id="coluna-senha-{{this.id}}">{{this.senha}}</td>
+                            <td id="coluna-meu-perfil-{{this.id}}">
+                                <i class="bx bx-edit btn-editar" id="btn-editar" onclick="criarElementosEditarAtributo({{this.id}})"></i>
+                            </td>
+                        </tr>
+                </table>
+            </div>
         </div>
-    </div>
+    {{/each}}
 </div>
 
 <script src="/js/meu-perfil.js"></script>

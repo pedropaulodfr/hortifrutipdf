@@ -15,6 +15,40 @@
     align-items: center;
     justify-content: center;
 }
+.foto-perfil-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px 20px 0px;
+    cursor: pointer;
+}
+.shadow:hover{
+    opacity: 1;
+}
+.shadow{
+    opacity: 0;
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-color:rgba(0, 0, 0, 0.5);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.shadow h1{
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+}
+.foto-perfil-content img{
+    max-width: 150px;
+    max-height: 120px;
+    width: auto;
+    height: auto;
+    border: solid 2px #ffffff;
+    border-radius: 50%;
+}
 .secao-tabela{
     display: inline;
 }
@@ -84,4 +118,7 @@
 .mostrar {
     opacity: 1;
     display: block;
+}
+input[type="file"]{
+    display: none;
 }

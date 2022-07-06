@@ -8,8 +8,20 @@ function retrocederPagina() {
     window.history.back();
 }
 
+function imagemPerfil() {
+    let linkImagemPerfil = localStorage.getItem("imagem_perfil");
+
+    console.log(linkImagemPerfil);
+
+    let imagemPerfil = document.getElementById("imagem-perfil");
+    imagemPerfil.src = linkImagemPerfil;
+}
+
 function deslogar() {
     bloquearRetroceder()
+
+    localStorage.clear("imagem_perfil")
+
     let form = document.createElement("form");
 
     form.action = "/admin";
@@ -28,6 +40,6 @@ function bloquearRetroceder() {
     window.history.forward();
 }
 
-//window.onload = bloquearRetroceder;
+window.onload = imagemPerfil;
 
 

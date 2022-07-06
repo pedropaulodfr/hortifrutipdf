@@ -53,9 +53,16 @@ router.post('/editar-meu-perfil/:id/:atributo/:novoValor', (req, res) => {
     if (atributo == "nome-usuario") {
         atributo = "nome_usuario"
     }
+    
+    if (atributo == "imagem_perfil") {
+        client.query("UPDATE usuarios SET " + atributo + " = '" + novoValor.replace(/kc=191/g, '/').replace(/kc=193/g, '?').replace(/kc=535070/g, '%2F') + "' WHERE id = " + id)
+        console.log("Atributo " + atributo + " do id " + id + " alterado com sucesso para " + novoValor.replace(/kc=191/g, '/').replace(/kc=193/g, '?').replace(/kc=535070/g, '%2F'))
+        
+    }else{
+        client.query("UPDATE usuarios SET " + atributo + " = '" + novoValor + "' WHERE id = " + id)
+        console.log("Atributo " + atributo + " do id " + id + " alterado com sucesso para " + novoValor)
+    }
 
-    client.query("UPDATE usuarios SET " + atributo + " = '" + novoValor + "' WHERE id = " + id)
-    console.log("Atributo " + atributo + " do id " + id + " alterado com sucesso para " + novoValor)
 
     res.redirect(307, '/meu-perfil/' + id)
 })

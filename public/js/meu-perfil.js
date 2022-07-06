@@ -91,3 +91,52 @@ function editarAtributo(atributo, id) {
     tabela.appendChild(form);
     form.submit();
 }
+
+function alterarFotoPerfil(id) {
+    let inputFile = document.createElement("input");
+    
+    inputFile.type = "file";
+    inputFile.name = "arquivoFoto";
+    inputFile.accept = ".png, .jpg, .jpeg";
+
+    document.body.appendChild(inputFile);
+
+    inputFile.click();
+
+    enviarFotoFirebase(id);
+
+}
+
+function enviarFotoFirebase(id) {
+    let input = document.querySelector("input[type=file]");
+    input.addEventListener("change", (e)=>{
+        var file = e.target.files[0]; 
+
+        let idImagem = Math.floor(Math.random() * 99999);
+        
+        const storage = firebase.storage();
+        const upload = storage.ref().child("profile").child(String(idImagem) + file.name).put(file)
+
+        upload.on("state_changed", () =>{
+            upload.snapshot.ref.getDownloadURL().then((GET_URL_IMAGEM) =>{        
+                enviarFotoBancoDeDados(GET_URL_IMAGEM, id)
+            })
+        })
+
+    })
+}
+
+function enviarFotoBancoDeDados(urlImagem, id) {
+    
+    let form = document.createElement("form");
+
+    form.action = "/update/editar-meu-perfil/" + id + "/imagem_perfil/" + urlImagem.replaceAll("/", "kc=191").replaceAll("?", "kc=193").replaceAll("%2F", "kc=535070");
+    form.method = "post";
+
+    document.body.appendChild(form);
+
+    form.submit();
+
+    localStorage.setItem("imagem_perfil", urlImagem);
+    
+}
