@@ -52,7 +52,7 @@ function iniciarEntregas(){
         let tabela = document.getElementById('dados-entrega');
 
         let h1 = document.createElement('h1');
-        h1.innerText = 'Não há entregas para as data selecionada';
+        h1.innerText = 'Não há entregas para a data selecionada';
 
         tabela.appendChild(h1);
     }

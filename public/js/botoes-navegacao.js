@@ -1,9 +1,6 @@
 let retrocederBtn = document.getElementById("btn-retroceder");
 retrocederBtn.addEventListener("click", retrocederPagina)
 
-let deslogarBtn = document.getElementById("btn-deslogar");
-deslogarBtn.addEventListener("click", deslogar)
-
 function retrocederPagina() {
     window.history.back();
 }
@@ -16,6 +13,11 @@ function imagemPerfil() {
     let imagemPerfil = document.getElementById("imagem-perfil");
     imagemPerfil.src = linkImagemPerfil;
 }
+
+
+document.getElementById("deslogar-i").addEventListener("click", deslogar);
+
+
 
 function deslogar() {
     bloquearRetroceder()
@@ -41,5 +43,6 @@ function bloquearRetroceder() {
 }
 
 window.onload = imagemPerfil;
+
 
 
