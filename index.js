@@ -174,11 +174,11 @@ app.post('/entregas/:diaAtual', (req, res) => {
 })
 
 app.post('/produtos', (req, res) =>{
-    client.query("SELECT * FROM frutas").then(resultsFrutas =>{
+    client.query("SELECT * FROM frutas ORDER BY nome").then(resultsFrutas =>{
         const resultadoFrutas = resultsFrutas.rows
-        client.query("SELECT * FROM verduras").then(resultsVerduras =>{
+        client.query("SELECT * FROM verduras ORDER BY nome").then(resultsVerduras =>{
             const resultadoVerduras = resultsVerduras.rows
-            client.query("SELECT * FROM legumes").then(resultsLegumes =>{
+            client.query("SELECT * FROM legumes ORDER BY nome").then(resultsLegumes =>{
                 const resultadoLegumes = resultsLegumes.rows
                 res.render('produtos', {
                     dadosConsultaFrutas: resultadoFrutas,
