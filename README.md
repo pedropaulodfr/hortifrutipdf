@@ -1,6 +1,6 @@
 # README
 
-<p align="center">Esse projeto é um projeto que teve por objetivo criar um site para uma loja fictícia do ramo de Hortifruti</p>
+<p align="center">Esse é um projeto que teve por objetivo criar um site para uma loja fictícia do ramo de Hortifruti</p>
 
 <p align="center">
   <a href="#sobre">Sobre |</a>
@@ -17,7 +17,7 @@
 
 ### Sobre
 
-<p align="center">Esse projeto é um projeto que teve por objetivo criar um site para uma loja fictícia do ramo de Hortifruti<br>
+<p align="center">Esse é um projeto que teve por objetivo criar um site para uma loja fictícia do ramo de Hortifruti<br>
 O site é dividido em dois módulos, a área do cliente e o painel administrativo.
 </p>
 <br>
