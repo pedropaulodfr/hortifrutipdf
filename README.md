@@ -44,23 +44,29 @@ O painel administratívo ou área administrativa, é um espaço destinado aos ge
 
 ### Tecnologias
 
-Python
-Beautiful Soup
-Requests
-Telegram APIs
-Shrtcode
+HTML
+JavaScript
+CSS
+Node.js
+Express
+Handlebars
+Body Parser
+Alias
+PostgreSQL
 
 
 ### Pré-requisitos
 
-Python
-BeautifulSoup4
-Requet
+Express
+Handlebars
+Body Parser
+Alias
+
 
 
 ### Experimente
 
-[Clique aqui para experimentar](https://t.me/SoPromo_bot).
+[Clique aqui para experimentar](http://hortifrutipdf.herokuapp.com/).
 
 
 ### Autor
@@ -70,5 +76,7 @@ Requet
 
 
 <h1 align="center">
-  <img alt="Readme" src="https://raw.githubusercontent.com/pedropaulodfr/sopromocao/main/image/avatar5065125335-0.jpg" width="320" height="320" />
+  <img alt="Readme" src="https://user-images.githubusercontent.com/29920024/179564370-a8ceba06-19ae-4709-9e6c-29e3b0b15a29.png" width="320" height="80" />
 </h1>
+
+
