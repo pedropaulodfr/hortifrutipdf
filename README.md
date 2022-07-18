@@ -45,22 +45,22 @@ O painel administratívo ou área administrativa, é um espaço destinado aos ge
 
 ### Tecnologias
 
-HTML
-JavaScript
-CSS
-Node.js
-Express
-Handlebars
-Body Parser
-Alias
+HTML,
+JavaScript,
+CSS,
+Node.js,
+Express,
+Handlebars,
+Body Parser,
+Alias,
 PostgreSQL
 
 
 ### Pré-requisitos
 
-Express
-Handlebars
-Body Parser
+Express,
+Handlebars,
+Body Parser,
 Alias
 
 
