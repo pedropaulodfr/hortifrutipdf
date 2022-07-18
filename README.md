@@ -31,10 +31,15 @@ O painel administratívo ou área administrativa, é um espaço destinado aos ge
 
 ### Funções
 
-- [x] Minerar promoções
-- [x] Enviar promoções pelo Telegram
-- [x] Formulário para avaliação do Bot
-- [x] Guia "Sobre"
+- [x] Selecionar Categorias
+- [x] Realizar compra
+- [x] Enviar compra para o banco de dados
+- [x] Painel administrativo
+- [x] Tela de login
+- [x] Visualizar entregas
+- [x] Visualizar e adicionar produtos
+- [x] Listar e adicionar usuários
+- [x] Editar perfil de usuário
 
 
 ### Tecnologias
