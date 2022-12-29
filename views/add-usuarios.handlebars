@@ -1,0 +1,44 @@
+{{>cabecalho}}
+{{>botoes-navegacao}}
+
+<link rel="stylesheet" href="/css/add-usuarios.css">
+
+<div id="modal-dados-usuarios-container" class="modal-dados-usuarios-container">
+    <div id="modal-dados-usuarios" class="modal-dados-usuarios">
+        <div id="modal-dados-usuarios-titulo" class="modal-dados-usuarios-titulo">
+            <h1>DADOS DO USUÁRIO</h1>
+        </div>
+        <div id="modal-dados-usuarios-campos" class="modal-dados-usuarios-campos">
+            <div class="campos">
+                <h3>Nome</h3>
+                <input type="text" id="campo-nome" style="width: 400px;">
+            </div>
+            <div class="campos">
+                <h3>CPF</h3>
+                <input type="text" id="campo-cpf" style="width: 200px; margin-left: 60px">
+            </div>
+            <div class="campos">
+                <h3>Nome de usuário</h3>
+                <input type="text" id="campo-nome-usuario" style="width: 200px;">
+            </div>
+            <div class="campos">
+                <h3>Senha</h3>
+                <input type="password" id="campo-senha">
+            </div>
+            <div class="campos">
+                <h3>Permissão de Super Usuário</h3>
+                <select name="superUser" id="superUser" style="width: 100px; height: 30px">
+                    <option value="1">Sim</option>
+                    <option value="0" selected>Não</option>
+                </select>
+            </div>
+            <div class="botao-confirmar">
+                <input type="submit" class="btn-comprar" value="Cadastrar" onclick="verificarCamposDadosUsuarios()">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/add-usuarios.js"></script>
+
+{{>rodape}}

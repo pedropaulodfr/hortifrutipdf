@@ -1,0 +1,41 @@
+{{>cabecalho}}
+{{>botoes-navegacao}}
+
+<link rel="stylesheet" href="/css/entregas.css">
+
+<div class="entregas-content">
+    <h1 class="title-entregas">ENTREGAS</h1>
+    <div class="seletores">
+        <div class="data" id="data">
+            <h3>Data</h3>
+            <input type="date" name="" id="seletor-data">
+            <button id="btn-data">
+                <i class='bx bxs-chevron-right'></i>
+            </button>
+        </div>
+    </div>
+    <div class="tabela">
+        <table border="1" id="dados-entrega" class="dados-entrega">
+            <tr id="cabecalho">
+                <td>Data</td>
+                <td>Nome</td>
+                <td>CPF</td>
+                <td>Endereço</td>
+                <td>Telefone</td>
+                <td>Produto</td>
+                <td>Quantidade</td>
+                <td>Valor Total</td>
+                <td>Excluir Entrega</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    let dadosEntregas = {{{dadosEntregas}}};
+</script>
+
+<script src="/js/entregas.js"></script>
+
+{{>rodape}}

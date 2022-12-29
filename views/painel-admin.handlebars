@@ -1,0 +1,72 @@
+{{>cabecalho}}
+
+<script src="/js/painel-admin.js"></script>
+
+<link rel="stylesheet" href="/css/painel-admin.css">
+
+<div class="categorias-container">
+    <div class="categorias">
+        <form action="/consultar/entregas/id" method="post" id="form-entregas">
+            <a href="javascript:document.getElementById('form-entregas').submit();">
+                <div class="box-categorias">
+                    <img src="/images/icons/entregas.png" alt="" srcset="">
+                    <h5>Entregas</h5>
+                </div>
+            </a>
+        </form>
+        <form action="/consultar/produtos/id" method="post" id="form-produtos">
+            <a href="javascript:document.getElementById('form-produtos').submit();">
+                <div class="box-categorias">
+                    <img src="/images/icons/produtos.png" alt="" srcset="">
+                    <h5>Produtos</h5>
+                </div>
+            </a>
+        </form>
+        <form action="/consultar/add-produtos/id" method="post" id="form-add-produtos">
+            <a href="javascript:document.getElementById('form-add-produtos').submit();">
+                <div class="box-categorias">
+                    <img src="/images/icons/add-produtos.png" alt="" srcset="">
+                    <h5>Add Produtos</h5>
+                </div>
+            </a>
+        </form>
+        {{#each superUser}}
+            {{#if superuser}}
+                <form action="/consultar/listar-usuarios/id" method="post" id="form-listar-funcionarios">
+                    <a href="javascript:document.getElementById('form-listar-funcionarios').submit();">
+                        <div class="box-categorias">
+                            <img src="/images/icons/listar-funcionarios.png" alt="" srcset="">
+                            <h5>Listar Funcionários</h5>
+                        </div>
+                    </a>
+                </form>
+
+                <form action="/consultar/add-usuarios/id" method="post" id="form-add-funcionarios">
+                    <a href="javascript:document.getElementById('form-add-funcionarios').submit();">
+                        <div class="box-categorias">
+                            <img src="/images/icons/add-funcionarios.png" alt="" srcset="">
+                            <h5>Add Funcionários</h5>
+                        </div>
+                    </a>
+                </form>
+            {{/if}}
+        {{/each}}
+        
+        {{#each dadosID}}
+            <form action="/consultar/meu-perfil/{{this.id}}" method="post" id="form-meu-perfil">
+                <a href="javascript:document.getElementById('form-meu-perfil').submit();">
+                    <div class="box-categorias">
+                        <img src="/images/icons/meu-perfil.png" alt="" srcset="">
+                        <h5>Meu perfil</h5>
+                    </div>
+                </a>
+            </form>
+        {{/each}}
+    </div>
+</div>
+
+    <script>
+        localStorage.setItem("imagem_perfil", {{{dadosImagemPerfil}}})
+    </script>
+
+{{>rodape}}
