@@ -23,8 +23,8 @@ function criarElementos(id, nome, valor, quantidadeDisponivel, unidade, linkImag
     img.src = linkImagem;
     h2.innerHTML = nome;
     h1.innerHTML = "R$ " + String(valor).replace('.', ',') + " / " + unidade;
-    form.action = "/comprar/" + id + "/" + nome + "/" + valor + "/" + unidade + "/" + quantidadeDisponivel + "/" + nomeRota + "/" + 
-                        linkImagem.replaceAll("/", "kc=191").replaceAll("?", "kc=193").replaceAll("%2F", "kc=535070");
+    form.action = `/comprar/${id}/${nome}/${valor}/${unidade}/${quantidadeDisponivel}/${nomeRota}/`
+                + `${linkImagem.replaceAll("/", "kc=191").replaceAll("?", "kc=193").replaceAll("%2F", "kc=535070")}`;
     form.method = "post";
     form.id = "form-comprar";
     input.className = "btn-comprar";

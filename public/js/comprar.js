@@ -1,7 +1,7 @@
 let divInfoProduto = document.getElementById("info-produto");
 let divImg = document.getElementById("img-produto");
 let campoValorTotal = document.getElementById("campo-valor-total");
-campoValorTotal.innerText = "R$ " + String(parametros.valor).replace(".", ",");
+campoValorTotal.innerText = `R$ ${String(parametros.valor).replace(".", ",")}`
 
 let img = document.createElement("img");
 let h1 = document.createElement("h1");
@@ -13,7 +13,7 @@ let inputQuantidade = document.createElement("input");
 
 img.src = parametros.linkImagem.replace(/kc=191/g, '/').replace(/kc=193/g, '?').replace(/kc=535070/g, '%2F');
 h1.innerText = parametros.nome;
-h2.innerText = "R$ " + String(parametros.valor).replace(".", ",") + " / " + parametros.unidade;
+h2.innerText = `R$ ${String(parametros.valor).replace(".", ",")}/${parametros.unidade}`;
 
 divValor.className = "valor-produto";
 divValor.id = "valor-produto";
@@ -39,11 +39,11 @@ inputQuantidade.addEventListener("click", () =>{
         inputQuantidade.value = parametros.quantidadeDisponivel;
     }else if (parseInt(quantidade) <= 0){
         inputQuantidade.value = 0;
-        campoValorTotal.innerText = "R$ " + String(parametros.valor).replace(".", ",");
+        campoValorTotal.innerText = `R$ ${String(parametros.valor).replace(".", ",")}`;
         campoValorTotal.classList.add('riscado');
     }
     else{
-        campoValorTotal.innerText = "R$ " + String(valorTotal.toFixed(2)).replace(".", ",");
+        campoValorTotal.innerText = `R$ ${String(valorTotal.toFixed(2)).replace(".", ",")}`;
         campoValorTotal.classList.remove('riscado');
     }
 

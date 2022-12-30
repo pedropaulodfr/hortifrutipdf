@@ -25,8 +25,8 @@ function salvarDados(nome, cpf, nome_usuario, senha, superUser) {
     
     let form = document.createElement("form");
     
-    form.action = "/insert/salvar-usuarios/"+ nome.value + "/" + cpf.value + "/" +  
-    nome_usuario.value + "/" + senha.value + "/" + superUser.value;
+    form.action = `/insert/salvar-usuarios/${nome.value}/${cpf.value}/${nome_usuario.value}/`
+                + `${senha.value}/${superUser.value}`;
     form.method = 'post';
     
     divContainer.appendChild(form);
@@ -48,7 +48,7 @@ function notificacaoDadosInseridos(nome_usuario) {
     divDadosInseridos.id = 'dados-inseridos-sucesso-content';
     divDadosInseridos.className = 'dados-inseridos-sucesso-content';
 
-    h2.innerText = "Usuário " + nome_usuario.value + " cadastrado com sucesso!";
+    h2.innerText = `Usuário ${nome_usuario.value} cadastrado com sucesso!`;
 
     form.action = '/add-usuarios';
     form.method = 'post';

@@ -158,7 +158,7 @@ app.post('/autenticacao/:usuario/:senha', (req, res) =>{
 app.post('/painel-admin/:id/:usuario', (req, res) =>{
     let usuario  = req.params.usuario
 
-    client.query("SELECT superuser, id, imagem_perfil FROM usuarios WHERE nome_usuario = '" + usuario + "'", (err, results, fields) => {
+    client.query(`SELECT superuser, id, imagem_perfil FROM usuarios WHERE nome_usuario = '${usuario}'`, (err, results, fields) => {
         console.log(results[0]);
 
         if (results[0].superuser == 1) {
@@ -229,7 +229,7 @@ app.post('/consultar/:categoria/:id', (req, res) =>{
 app.post('/entregas/:diaAtual', (req, res) => {
     console.log('Mostrando tabela do dia ' + req.params.diaAtual);
 
-    client.query("SELECT *, DATE_FORMAT(data_pedido, '%d/%m/%Y') AS data_pedido FROM entregas WHERE data_pedido = '" + req.params.diaAtual + "'", (err, results, fields) => {
+    client.query(`SELECT *, DATE_FORMAT(data_pedido, '%d/%m/%Y') AS data_pedido FROM entregas WHERE data_pedido = '${req.params.diaAtual}'`, (err, results, fields) => {
         res.render('entregas', {
             dadosEntregas: JSON.stringify(results)
         } )
@@ -300,7 +300,7 @@ app.post('/meu-perfil/:id', (req, res) => {
     let id = req.params.id
     console.log("Meu perfil -> ", id);
 
-    client.query("SELECT * FROM usuarios WHERE id = " + id, (err, resultsUsuario, fields) => {
+    client.query(`SELECT * FROM usuarios WHERE id = ${id}`, (err, resultsUsuario, fields) => {
         res.render('meu-perfil', {
             dadosConsultaUsuario: resultsUsuario
         })
@@ -315,5 +315,5 @@ app.post('/meu-perfil/:id', (req, res) => {
 })
 
 app.listen(porta, ()=>{
-    console.log("Servidor rodando na porta http://localhost:" + porta)
+    console.log(`Servidor rodando na porta http://localhost:${porta}`)
 })

@@ -36,7 +36,7 @@ function verificarCamposAutenticacao(){
 function autenticacao(usuario, senha){
     console.log(usuario, senha);
     let form = document.createElement('form');
-    form.action = '/autenticacao/' + usuario + '/' + senha;
+    form.action = `/autenticacao/${usuario}/${senha}`;
     form.method = 'post';
     
     document.getElementById('autenticacao-container').appendChild(form);

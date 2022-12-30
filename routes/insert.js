@@ -2,10 +2,15 @@ const express = require("express")
 const router = express.Router()
 require("module-alias/register")
 const client = require("@server/server")
-const { query } = require("express")
+
+const data = new Date()
+const dia = data.getDate()
+const mes = data.getMonth() + 1
+const ano = data.getFullYear()
+const diaAtual = ano + '/' + mes + '/' + dia
 
 router.post('/confirmarCompra/:nomeRota/:id/:produto/:quantidade/:valorTotal/:nome/:cpf/:telefone/:rua/:numero/:bairro/:cidade/:cep', (req, res) =>{
-    client.query("SELECT quantidade_disponivel FROM " + req.params.nomeRota + " WHERE id =" + req.params.id, (err, results, fields) => {
+    client.query(`SELECT quantidade_disponivel FROM ${req.params.nomeRota} WHERE id = ${req.params.id}`, (err, results, fields) => {
         quantidadeDisponivel = results[0].quantidade_disponivel
         inserirEntregasBD()
         atualizarQuantidadeDisponivel(quantidadeDisponivel)
@@ -20,14 +25,23 @@ router.post('/confirmarCompra/:nomeRota/:id/:produto/:quantidade/:valorTotal/:no
 
     function inserirEntregasBD() {
         let sql = `INSERT INTO entregas`
+                    + ` (produto, quantidade, valor_total, nome, cpf, telefone, rua, numero, bairro, cidade, cep, produto_id, categoria, data_pedido)` 
+                    + ` VALUES `
+                    + ` ( '${String(req.params.produto)}', ${req.params.quantidade}, ${req.params.valorTotal}, '${String(req.params.nome)}', `
+                    +   ` '${String(req.params.cpf)}', '${String(req.params.telefone)}', '${String(req.params.rua)}', ${req.params.numero},`
+                    +   ` '${String(req.params.bairro)}', '${String(req.params.cidade)}', '${String(req.params.cep)}', ${req.params.id}, `
+                    +   ` '${req.params.nomeRota}', '${diaAtual}' ) `
+
+        client.query(sql)
+
+        /*let sql = `INSERT INTO entregas`
                     + ` (produto, quantidade, valor_total, nome, cpf, telefone, rua, numero, bairro, cidade, cep, produto_id, categoria)` 
                     + ` VALUES `
                     + ` ( '${String(req.params.produto)}', ${req.params.quantidade}, ${req.params.valorTotal}, '${String(req.params.nome)}', `
                     +   ` '${String(req.params.cpf)}', '${String(req.params.telefone)}', '${String(req.params.rua)}', ${req.params.numero},`
                     +   ` '${String(req.params.bairro)}', '${String(req.params.cidade)}', '${String(req.params.cep)}', ${req.params.id}, `
-                    +   ` '${req.params.nomeRota}' ) `
+                    +   ` '${req.params.nomeRota}' ) `*/
         
-            client.query(sql)
 
         /*let sql = "INSERT INTO entregas" + 
                     "(produto, quantidade, valor_total, nome, cpf, telefone, rua, numero, " +

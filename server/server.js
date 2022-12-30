@@ -26,12 +26,20 @@ const client = new Client({
     database: "hortifruti"
 })*/
 
-const Client = require("mysql")
+/*const Client = require("mysql")
 var client = Client.createConnection({
     host     : '127.0.0.1',
     user     : 'root',
     password : 'admin',
     database : 'hortifruti'
+})*/
+
+const Client = require("mysql")
+var client = Client.createConnection({
+    host     : 'sql.freedb.tech',
+    user     : 'freedb_hortifruti_admin',
+    password : '4@Zq2!CptNf!Frt',
+    database : 'freedb_hortifruti'
 })
 
 
