@@ -1,3 +1,4 @@
+require('dotenv').config()
 // Conexão com o banco de dados cloud
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 const pg = require('pg')
@@ -36,10 +37,10 @@ var client = Client.createConnection({
 
 const Client = require("mysql")
 var client = Client.createConnection({
-    host     : 'sql.freedb.tech',
-    user     : 'freedb_hortifruti_admin',
-    password : '4@Zq2!CptNf!Frt',
-    database : 'freedb_hortifruti'
+    host     : process.env.DB_HOST,
+    user     : process.env.DB_USER,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_DATABASE
 })
 
 
